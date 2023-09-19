@@ -2,7 +2,8 @@
   "index.qmd": {
     "index.html": "1307b970",
     "index.md": "42cea931",
-    "index.tex": "5709fe56"
+    "index.tex": "5709fe56",
+    "index.ipynb": "43344ccc"
   },
   "posts/post-with-code/index.qmd": {
     "index.html": "1694038c"
