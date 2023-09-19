@@ -1,8 +1,16 @@
 {
   "index.qmd": {
-    "index.html": "33f4ea5d",
-    "index.ipynb": "ef9e03cf",
-    "index.md": "7e1a6803",
-    "index.tex": "6028e345"
+    "index.html": "1307b970",
+    "index.md": "42cea931",
+    "index.tex": "5709fe56"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "1694038c"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "e33157b0"
+  },
+  "about.qmd": {
+    "about.html": "3f365e63"
   }
 }
