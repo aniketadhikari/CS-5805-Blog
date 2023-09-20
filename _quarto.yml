@@ -3,8 +3,13 @@ project:
   output-dir: /
 
 website:
-  title: "aniketadhikari.github.io"
+  title: "aniketadhikari.github.io ML Blog"
   navbar:
+    style: docked
+    background: primary 
+    search: true
+    page-footer: "Copyright 2023, Aniket Adhikari" 
+    reader-mode: true
     right:
       - about.qmd
       - icon: github
@@ -13,7 +18,7 @@ website:
         href: https://linkedin.com/in/aniket-adhikari
 format:
   html:
-    theme: morph
+    theme: lux
     css: styles.css
 
 
