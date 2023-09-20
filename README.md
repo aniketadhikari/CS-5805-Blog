@@ -1,3 +1,1 @@
-# aniketadhikari.github.io
-
-Blog for CS 5805
+# Blog for CS 5805
