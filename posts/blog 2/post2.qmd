@@ -1,8 +1,7 @@
 ---
-title: "Post With Code"
+title: "Clustering"
 author: "Aniket Adhikari"
-date: "2023-09-20"
-categories: [news, code, analysis]
+date: "2023-10-25"
 image: "image.jpg"
 ---
 

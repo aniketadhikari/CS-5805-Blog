@@ -1,8 +1,7 @@
 ---
-title: "Welcome To My Blog"
+title: "Linear and nonlinear regression"
 author: "Aniket Adhikari"
 date: "2023-09-20"
-categories: [news]
 ---
 
 This is the first post in a Quarto blog. Welcome!

@@ -16,5 +16,17 @@
   },
   "posts/welcome copy/index.qmd": {
     "index.html": "c08a7106"
+  },
+  "posts/blog 1/index.qmd": {
+    "index.html": "96b7f58c"
+  },
+  "posts/blog 1/post1.qmd": {
+    "post1.html": "fc03e35b"
+  },
+  "posts/blog 2/post2.qmd": {
+    "post2.html": "d29cef87"
+  },
+  "posts/blog 3/post3.qmd": {
+    "post3.html": "60106732"
   }
 }
