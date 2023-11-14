@@ -60,30 +60,17 @@ import sys
 
 assert sys.version_info >= (3, 7)
 ```
-
 ```{python}
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
 
-np.random.seed(42)
-
-plt.rc('font', size=12)
-plt.rc('axes', labelsize=14, titlesize=14)
-plt.rc('legend', fontsize=12)
-plt.rc('xtick', labelsize=10)
+plt.rc('font', size=12) # font size 
+plt.rc('axes', labelsize=14, titlesize=14) # font size of axis and label titles 
+plt.rc('legend', fontsize=12) # font size of legend
+plt.rc('xtick', labelsize=5) # size of 
 plt.rc('ytick', labelsize=10)
 ```
-
-
 ```{python}
-data_source_raw = ""
+data_source_raw = "../../datasets/pokemon.csv"
 data_source_result = pd.read_csv(data_source_raw)
-x_values = data_source_result[""]
-```
-
-
-```{python}
-
 ```
