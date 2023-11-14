@@ -19,11 +19,71 @@ Under the umbrella of probability theory is a couple of key concepts that I will
 -   Bayes' Theorem
 
 # Areas of Importance
-1. Science and Engineering
 
-In fields of science such as physics, biology, and engineering, probability theory is essential for modeling random processes like signal processing and particle behavior
+Probability theory has proven to be crucial in various fields including, but not limited to: 
 
-1. Finance and Economics 
-2. Machine Learning and Artificial Intelligence 
-3. Quality Control (QC)
-4. Medicine 
+1. Economics
+
+In economics, probability models are used to forecast certain economic indicators like annual GDP growth, inflation, and unemployment rates. Through these forecasts, policymakers are able to make informed decisions about the macroeconomy [2]
+
+2. Finance 
+
+Probability theory is fundamental for assessing risk in financial markets. It has a massive influence on how institutional and individual investors make decisions regarding buying and selling of securities. It also influences the way financial derivatives like options are priced by sellers [2].
+
+3. Medicine
+
+3 years ago, the whole world was shut down by COVID-19, which resulted in many people falling ill. In instances like this, epidemiologists utilize predictive algorithms to measure the probability of patients being carriers disease carriers based on symptom screening. By identifying novel cases of COVID-19, there is potential that it can be identified early, which can help to reduce long-term complications and even save lives [3]
+
+# Random Variables 
+In the context of probability theory, a random variable is usually designated as $X$ and can take on different numerical values a as result of random events/experiments. The numerical values associated with the outcome of the event are determined by the underlying probability space[4].[5]. There are 2 types of random variables values: 
+
+## Discrete Variable
+**Discrete variables** are variables that can only take on certain discrete, countable values. It is restricted to integers and can not be represented as a decimal or fraction. 
+
+Examples:
+- Counts and integers like number of items or scores
+- Binary variables like pass/fail or yes/no 
+- Rating scales like rating movies on a 1-5 star scale
+- Event outcomes such as a dice roll or coin flip
+
+## Continuous Variables
+**Continuous variables** are able to take on an infinite number of real values within a range. It can take on fractional or decimal values in addition to integer values.
+
+Examples: 
+* Physical measurements like height, weight, temperature
+* Time, geographic coordinates
+* Natural phenomena like air pressure 
+
+## Comparison of Continuous and Discrete Variables
+```{python}
+import sys
+
+assert sys.version_info >= (3, 7)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+np.random.seed(42)
+
+plt.rc('font', size=12)
+plt.rc('axes', labelsize=14, titlesize=14)
+plt.rc('legend', fontsize=12)
+plt.rc('xtick', labelsize=10)
+plt.rc('ytick', labelsize=10)
+```
+
+
+```{python}
+data_source_raw = ""
+data_source_result = pd.read_csv(data_source_raw)
+x_values = data_source_result[""]
+```
+
+
+```{python}
+
+```
