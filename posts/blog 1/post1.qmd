@@ -69,3 +69,5 @@ An example of conditional probability would be the probability that someone has 
 Bayes' Theorem is a formula that is used to calculate conditional probabilities. Essentially, it describes the probability of an event $A$, given that there is some new information $B$. That is, $P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}$. 
 
 Bayes' Theorem is really useful in Machine Learning and statistics since it is used to update probability distributions based on observed data. 
+
+# Application
