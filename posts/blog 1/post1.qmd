@@ -51,8 +51,6 @@ Examples:
 * Time, geographic coordinates
 * Natural phenomena like air pressure 
 
-## Comparison of Continuous and Discrete Variables
-
 #  Independence
 In probability theory, we say that two events $A$ and $B$ are independent if the occurence of one of the events does not effect the probability of the other event. That is, $P(A|B)=P(A)$ and $P(B|A)=P(B)$. 
 
