@@ -5,18 +5,15 @@ date: "2023-10-23"
 date-modified: "2023-11-13"
 ---
 ---
-## What is Probability Theory?
+# What is Probability Theory?
 The outcome of random events like rolling a pair of dice are impossible to predict with absolute certainty. Probability theory provides a mathematical framework for quantifying uncertainty and randomness in these situations where outcome is not deterministic. 
 
 Under the umbrella of probability theory is a couple of key concepts that I will be going through, such as:
 
--   Probability
 -   Random Variables
--   Probability Distributions 
--   Events and Sample Spaces 
--   Conditional Probability 
 -   Independence
--   Bayes' Theorem
+-   Conditional Probability
+-   Bayes Theorem
 
 # Areas of Importance
 
@@ -55,22 +52,22 @@ Examples:
 * Natural phenomena like air pressure 
 
 ## Comparison of Continuous and Discrete Variables
-```{python}
-import sys
 
-assert sys.version_info >= (3, 7)
-```
-```{python}
-import matplotlib.pyplot as plt
-import pandas as pd
+#  Independence
+In probability theory, we say that two events $A$ and $B$ are independent if the occurence of one of the events does not effect the probability of the other event. That is, $P(A|B)=P(A)$ and $P(B|A)=P(B)$. 
 
-plt.rc('font', size=12) # font size 
-plt.rc('axes', labelsize=14, titlesize=14) # font size of axis and label titles 
-plt.rc('legend', fontsize=12) # font size of legend
-plt.rc('xtick', labelsize=5) # size of 
-plt.rc('ytick', labelsize=10)
-```
-```{python}
-data_source_raw = "../../datasets/pokemon.csv"
-data_source_result = pd.read_csv(data_source_raw)
-```
+For independent events, the probability of both occuring is the product of their respective probabilities. That is, $P(A \cap B)=P(A)*P(B)$
+
+Independence can be used to determine whether the probability of one event is dependent on the outcome of another or not. Events that are not independent are dependent, meaning the occurence of one event influences the outcome of another. In statists, we want samples to be independent so we don't introduce bias.
+
+An example of independence would be a coin flip.  If we were to flip 2 coins, the outcome of one of the coins is not going to effect the other since they are independent. Another example would be rolling a pair of dice. The outcome of one dice does not affect another pair.
+
+# Conditional Probability
+Conditional probability refers to the measure of probability of an event $A$ occuring, given an another event $B$ has already occured. That us, $P(A|B)$. 
+
+An example of conditional probability would be the probability that someone has the flu, given they are coughing. 
+
+# Bayes' Theorem
+Bayes' Theorem is a formula that is used to calculate conditional probabilities. Essentially, it describes the probability of an event $A$, given that there is some new information $B$. That is, $P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}$. 
+
+Bayes' Theorem is really useful in Machine Learning and statistics since it is used to update probability distributions based on observed data. 
