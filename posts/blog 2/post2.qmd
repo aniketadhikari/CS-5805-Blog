@@ -1,8 +1,11 @@
 ---
 title: "Clustering"
 author: "Aniket Adhikari"
-date: "2023-10-25"
-image: "image.jpg"
+date: "2023-11-15"
+date-modified: "2023-11-15"
+toc: true
+toc-title: "On this page"
+
 ---
 
-This is a post with executable code.
+# What is Clustering?
