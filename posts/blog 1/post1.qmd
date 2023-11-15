@@ -3,6 +3,8 @@ title: "Probability Theory"
 author: "Aniket Adhikari"
 date: "2023-10-23"
 date-modified: "2023-11-15"
+toc: true
+toc-title: "On this page"
 ---
 
 # What is Probability Theory?
