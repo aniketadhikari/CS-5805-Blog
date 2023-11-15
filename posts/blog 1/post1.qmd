@@ -2,9 +2,9 @@
 title: "Probability Theory"
 author: "Aniket Adhikari"
 date: "2023-10-23"
-date-modified: "2023-11-13"
+date-modified: "2023-11-15"
 ---
----
+
 # What is Probability Theory?
 The outcome of random events like rolling a pair of dice are impossible to predict with absolute certainty. Probability theory provides a mathematical framework for quantifying uncertainty and randomness in these situations where outcome is not deterministic. 
 
@@ -19,15 +19,15 @@ Under the umbrella of probability theory is a couple of key concepts that I will
 
 Probability theory has proven to be crucial in various fields including, but not limited to: 
 
-1. Economics
+## Economics
 
 In economics, probability models are used to forecast certain economic indicators like annual GDP growth, inflation, and unemployment rates. Through these forecasts, policymakers are able to make informed decisions about the macroeconomy [2]
 
-2. Finance 
+## Finance 
 
 Probability theory is fundamental for assessing risk in financial markets. It has a massive influence on how institutional and individual investors make decisions regarding buying and selling of securities. It also influences the way financial derivatives like options are priced by sellers [2].
 
-3. Medicine
+## Medicine
 
 3 years ago, the whole world was shut down by COVID-19, which resulted in many people falling ill. In instances like this, epidemiologists utilize predictive algorithms to measure the probability of patients being carriers disease carriers based on symptom screening. By identifying novel cases of COVID-19, there is potential that it can be identified early, which can help to reduce long-term complications and even save lives [3]
 
@@ -74,10 +74,11 @@ Bayes' Theorem is really useful in Machine Learning and statistics since it is u
 We start off by importing `pandas`, which will allow us to extract, aggregate, and analyze our data. We also need to import   `matplotlib` since we need to visualize the data as well.
 
 The aesthetic of the visualizations are altered as well. The size of the legend, axis, ticks, and font are all altered. 
+
+```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
 
-```{python}
 plt.rc('font', size=12) # font size 
 plt.rc('axes', labelsize=14, titlesize=14) # font size of axis and label titles 
 plt.rc('legend', fontsize=12) # font size of legend
@@ -97,26 +98,27 @@ data_source_result
 Taking a look at the data output, we can see there are 20 columns total. We can then run the `info()` command on the dataset to get a breakdown of datatypes and more.
 
 As shown below, 16 of the 20 columns are numerical values. Of the 16, most of them are *discrete variables*  since they are integer values such as:
-- `attack`
-- `base_egg_steps`
-- `base_happiness`
-- `base_total`
-- `defense`
-- `experience_growth`
-- `hp`
-- `pokedex_number`
-- `sp_attack`
-- `sp_defense`
-- `speed`
-- `generation`
-- `is_legendary`
+
+* `attack`
+* `base_egg_steps`
+* `base_happiness`
+* `base_total`
+* `defense`
+* `experience_growth`
+* `hp`
+* `pokedex_number`
+* `sp_attack`
+* `sp_defense`
+* `speed`
+* `generation`
+* `is_legendary`
 
 The others are *continuous variables* because they can take on an infinite number of values within a given range:
-
-```{python}
 - `height_m`
 - `percentage_male`
 - `weight_kg`
+  
+```{python}
 data_source_result.info()
 ```
 
@@ -168,14 +170,13 @@ legendary_pokemon = gen7_pokemon['is_legendary']
 legendary_percentages = legendary_pokemon.value_counts(normalize=True)
 ```
 
- From there, we use 0 and 1 as index values and the percentages that were calculated earlier are used as the values. 
+From there, we use 0 and 1 as index values and the percentages that were calculated earlier are used as the values. 
  
- ```{python}
+```{python}
 legendary_percentages = pd.Series(legendary_percentages.values, index=legendary_pokemon.unique())
-legendary_percentages
 ```
 
-From there, I created a pie graph since we're only comparing 2 values. As we can see, there is 78.75% non-legendary Pokemon and 21.25% legendary Pokemon in Generation 7
+From there, I created a pie graph since we're only comparing 2 values. As we can see, there is 78.75% non-legendary Pokemon and 21.25% legendary Pokemon in Generation 7.
 
 ```{python}
 legendary_percentages.plot(kind="pie", ylabel="", title="% of Legendary Gen 7 Pokemon", labels=["Not Legendary", "Legendary"], autopct='%.1f%%')
@@ -204,4 +205,5 @@ We then do 1 divided by the count to get our new odds. We have improved our gues
 ```{python}
 1/legendary_gen1_count * 100
 ```
+
 This showcasing *Bayes' Theorem*, which suggests bringing in new evidence will effect the outcome of the event. In our case, we found out that the Pokemon we were looking for is in Generation 1 and Legendary. This narrowed down the choices Pokemon we can guess from

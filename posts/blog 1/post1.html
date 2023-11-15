@@ -95,6 +95,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -185,36 +188,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<hr>
-<section id="what-is-probability-theory" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-probability-theory">What is Probability Theory?</h2>
+<section id="what-is-probability-theory" class="level1">
+<h1>What is Probability Theory?</h1>
 <p>The outcome of random events like rolling a pair of dice are impossible to predict with absolute certainty. Probability theory provides a mathematical framework for quantifying uncertainty and randomness in these situations where outcome is not deterministic.</p>
 <p>Under the umbrella of probability theory is a couple of key concepts that I will be going through, such as:</p>
 <ul>
-<li>Probability</li>
 <li>Random Variables</li>
-<li>Probability Distributions</li>
-<li>Events and Sample Spaces</li>
-<li>Conditional Probability</li>
 <li>Independence</li>
-<li>Bayes’ Theorem</li>
+<li>Conditional Probability</li>
+<li>Bayes Theorem</li>
 </ul>
 </section>
 <section id="areas-of-importance" class="level1">
 <h1>Areas of Importance</h1>
 <p>Probability theory has proven to be crucial in various fields including, but not limited to:</p>
-<ol type="1">
-<li>Economics</li>
-</ol>
+<section id="economics" class="level2">
+<h2 class="anchored" data-anchor-id="economics">Economics</h2>
 <p>In economics, probability models are used to forecast certain economic indicators like annual GDP growth, inflation, and unemployment rates. Through these forecasts, policymakers are able to make informed decisions about the macroeconomy [2]</p>
-<ol start="2" type="1">
-<li>Finance</li>
-</ol>
+</section>
+<section id="finance" class="level2">
+<h2 class="anchored" data-anchor-id="finance">Finance</h2>
 <p>Probability theory is fundamental for assessing risk in financial markets. It has a massive influence on how institutional and individual investors make decisions regarding buying and selling of securities. It also influences the way financial derivatives like options are priced by sellers [2].</p>
-<ol start="3" type="1">
-<li>Medicine</li>
-</ol>
+</section>
+<section id="medicine" class="level2">
+<h2 class="anchored" data-anchor-id="medicine">Medicine</h2>
 <p>3 years ago, the whole world was shut down by COVID-19, which resulted in many people falling ill.&nbsp;In instances like this, epidemiologists utilize predictive algorithms to measure the probability of patients being carriers disease carriers based on symptom screening. By identifying novel cases of COVID-19, there is potential that it can be identified early, which can help to reduce long-term complications and even save lives [3]</p>
+</section>
 </section>
 <section id="random-variables" class="level1">
 <h1>Random Variables</h1>
@@ -229,30 +228,514 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Continuous variables</strong> are able to take on an infinite number of real values within a range. It can take on fractional or decimal values in addition to integer values.</p>
 <p>Examples: * Physical measurements like height, weight, temperature * Time, geographic coordinates * Natural phenomena like air pressure</p>
 </section>
-<section id="comparison-of-continuous-and-discrete-variables" class="level2">
-<h2 class="anchored" data-anchor-id="comparison-of-continuous-and-discrete-variables">Comparison of Continuous and Discrete Variables</h2>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> sys.version_info <span class="op">&gt;=</span> (<span class="dv">3</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'font'</span>, size<span class="op">=</span><span class="dv">12</span>) <span class="co"># font size </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'axes'</span>, labelsize<span class="op">=</span><span class="dv">14</span>, titlesize<span class="op">=</span><span class="dv">14</span>) <span class="co"># font size of axis and label titles </span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'legend'</span>, fontsize<span class="op">=</span><span class="dv">12</span>) <span class="co"># font size of legend</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'xtick'</span>, labelsize<span class="op">=</span><span class="dv">5</span>) <span class="co"># size of </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'ytick'</span>, labelsize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_source_raw <span class="op">=</span> <span class="st">"../../datasets/pokemon.csv"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_source_result <span class="op">=</span> pd.read_csv(data_source_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-
 </section>
+<section id="independence" class="level1">
+<h1>Independence</h1>
+<p>In probability theory, we say that two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurence of one of the events does not effect the probability of the other event. That is, <span class="math inline">\(P(A|B)=P(A)\)</span> and <span class="math inline">\(P(B|A)=P(B)\)</span>.</p>
+<p>For independent events, the probability of both occuring is the product of their respective probabilities. That is, <span class="math inline">\(P(A \cap B)=P(A)*P(B)\)</span></p>
+<p>Independence can be used to determine whether the probability of one event is dependent on the outcome of another or not. Events that are not independent are dependent, meaning the occurence of one event influences the outcome of another. In statists, we want samples to be independent so we don’t introduce bias.</p>
+<p>An example of independence would be a coin flip. If we were to flip 2 coins, the outcome of one of the coins is not going to effect the other since they are independent. Another example would be rolling a pair of dice. The outcome of one dice does not affect another pair.</p>
+</section>
+<section id="conditional-probability" class="level1">
+<h1>Conditional Probability</h1>
+<p>Conditional probability refers to the measure of probability of an event <span class="math inline">\(A\)</span> occuring, given an another event <span class="math inline">\(B\)</span> has already occured. That us, <span class="math inline">\(P(A|B)\)</span>.</p>
+<p>An example of conditional probability would be the probability that someone has the flu, given they are coughing.</p>
+</section>
+<section id="bayes-theorem" class="level1">
+<h1>Bayes’ Theorem</h1>
+<p>Bayes’ Theorem is a formula that is used to calculate conditional probabilities. Essentially, it describes the probability of an event <span class="math inline">\(A\)</span>, given that there is some new information <span class="math inline">\(B\)</span>. That is, <span class="math inline">\(P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}\)</span>.</p>
+<p>Bayes’ Theorem is really useful in Machine Learning and statistics since it is used to update probability distributions based on observed data.</p>
+</section>
+<section id="application" class="level1">
+<h1>Application</h1>
+<p>We start off by importing <code>pandas</code>, which will allow us to extract, aggregate, and analyze our data. We also need to import <code>matplotlib</code> since we need to visualize the data as well.</p>
+<p>The aesthetic of the visualizations are altered as well. The size of the legend, axis, ticks, and font are all altered.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'font'</span>, size<span class="op">=</span><span class="dv">12</span>) <span class="co"># font size </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'axes'</span>, labelsize<span class="op">=</span><span class="dv">14</span>, titlesize<span class="op">=</span><span class="dv">14</span>) <span class="co"># font size of axis and label titles </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'legend'</span>, fontsize<span class="op">=</span><span class="dv">12</span>) <span class="co"># font size of legend</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'xtick'</span>, labelsize<span class="op">=</span><span class="dv">5</span>) <span class="co"># size of ticks on x-axis</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'ytick'</span>, labelsize<span class="op">=</span><span class="dv">10</span>) <span class="co"># size of ticks on y-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I decided to use a dataset from Kaggle of the first 7 generations of Pokemon. Pokemon is a really old video game franchise and essentially any time a new game was made, they would come up new Pokemon. The new Pokemon for the game would comprise of a generation and usually there’s around 100 or more Pokemon per generation. This dataset shows basic information about Pokemon such as their names, weight, height, and number in the Pokedex. Additionally, it includes information that can be interesting to analyze when aggregated, such as attack, defense, hit points (HP), generation, if they are considered legendary, and much more.</p>
+<p>Here, we are loading the csv file and converting it into a <code>pandas</code> Series so that it can be examined.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_source_raw <span class="op">=</span> <span class="st">"../../datasets/pokemon.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data_source_result <span class="op">=</span> pd.read_csv(data_source_raw)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data_source_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/aniketadhikari/anaconda3/envs/homl3/lib/python3.10/site-packages/IPython/core/formatters.py:343: FutureWarning: In future versions `DataFrame.to_latex` is expected to utilise the base implementation of `Styler.to_latex` for formatting and rendering. The arguments signature may therefore change. It is recommended instead to use `DataFrame.style.to_latex` which also contains additional functionality.
+  return method()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="132">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">attack</th>
+<th data-quarto-table-cell-role="th">base_egg_steps</th>
+<th data-quarto-table-cell-role="th">base_happiness</th>
+<th data-quarto-table-cell-role="th">base_total</th>
+<th data-quarto-table-cell-role="th">capture_rate</th>
+<th data-quarto-table-cell-role="th">defense</th>
+<th data-quarto-table-cell-role="th">experience_growth</th>
+<th data-quarto-table-cell-role="th">height_m</th>
+<th data-quarto-table-cell-role="th">hp</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">percentage_male</th>
+<th data-quarto-table-cell-role="th">pokedex_number</th>
+<th data-quarto-table-cell-role="th">sp_attack</th>
+<th data-quarto-table-cell-role="th">sp_defense</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">type1</th>
+<th data-quarto-table-cell-role="th">type2</th>
+<th data-quarto-table-cell-role="th">weight_kg</th>
+<th data-quarto-table-cell-role="th">generation</th>
+<th data-quarto-table-cell-role="th">is_legendary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>49</td>
+<td>5120</td>
+<td>70</td>
+<td>318</td>
+<td>45</td>
+<td>49</td>
+<td>1059860</td>
+<td>0.7</td>
+<td>45</td>
+<td>Bulbasaur</td>
+<td>88.1</td>
+<td>1</td>
+<td>65</td>
+<td>65</td>
+<td>45</td>
+<td>grass</td>
+<td>poison</td>
+<td>6.9</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>62</td>
+<td>5120</td>
+<td>70</td>
+<td>405</td>
+<td>45</td>
+<td>63</td>
+<td>1059860</td>
+<td>1.0</td>
+<td>60</td>
+<td>Ivysaur</td>
+<td>88.1</td>
+<td>2</td>
+<td>80</td>
+<td>80</td>
+<td>60</td>
+<td>grass</td>
+<td>poison</td>
+<td>13.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>100</td>
+<td>5120</td>
+<td>70</td>
+<td>625</td>
+<td>45</td>
+<td>123</td>
+<td>1059860</td>
+<td>2.0</td>
+<td>80</td>
+<td>Venusaur</td>
+<td>88.1</td>
+<td>3</td>
+<td>122</td>
+<td>120</td>
+<td>80</td>
+<td>grass</td>
+<td>poison</td>
+<td>100.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>52</td>
+<td>5120</td>
+<td>70</td>
+<td>309</td>
+<td>45</td>
+<td>43</td>
+<td>1059860</td>
+<td>0.6</td>
+<td>39</td>
+<td>Charmander</td>
+<td>88.1</td>
+<td>4</td>
+<td>60</td>
+<td>50</td>
+<td>65</td>
+<td>fire</td>
+<td>NaN</td>
+<td>8.5</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>64</td>
+<td>5120</td>
+<td>70</td>
+<td>405</td>
+<td>45</td>
+<td>58</td>
+<td>1059860</td>
+<td>1.1</td>
+<td>58</td>
+<td>Charmeleon</td>
+<td>88.1</td>
+<td>5</td>
+<td>80</td>
+<td>65</td>
+<td>80</td>
+<td>fire</td>
+<td>NaN</td>
+<td>19.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">796</td>
+<td>101</td>
+<td>30720</td>
+<td>0</td>
+<td>570</td>
+<td>25</td>
+<td>103</td>
+<td>1250000</td>
+<td>9.2</td>
+<td>97</td>
+<td>Celesteela</td>
+<td>NaN</td>
+<td>797</td>
+<td>107</td>
+<td>101</td>
+<td>61</td>
+<td>steel</td>
+<td>flying</td>
+<td>999.9</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">797</td>
+<td>181</td>
+<td>30720</td>
+<td>0</td>
+<td>570</td>
+<td>255</td>
+<td>131</td>
+<td>1250000</td>
+<td>0.3</td>
+<td>59</td>
+<td>Kartana</td>
+<td>NaN</td>
+<td>798</td>
+<td>59</td>
+<td>31</td>
+<td>109</td>
+<td>grass</td>
+<td>steel</td>
+<td>0.1</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">798</td>
+<td>101</td>
+<td>30720</td>
+<td>0</td>
+<td>570</td>
+<td>15</td>
+<td>53</td>
+<td>1250000</td>
+<td>5.5</td>
+<td>223</td>
+<td>Guzzlord</td>
+<td>NaN</td>
+<td>799</td>
+<td>97</td>
+<td>53</td>
+<td>43</td>
+<td>dark</td>
+<td>dragon</td>
+<td>888.0</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">799</td>
+<td>107</td>
+<td>30720</td>
+<td>0</td>
+<td>600</td>
+<td>3</td>
+<td>101</td>
+<td>1250000</td>
+<td>2.4</td>
+<td>97</td>
+<td>Necrozma</td>
+<td>NaN</td>
+<td>800</td>
+<td>127</td>
+<td>89</td>
+<td>79</td>
+<td>psychic</td>
+<td>NaN</td>
+<td>230.0</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">800</td>
+<td>95</td>
+<td>30720</td>
+<td>0</td>
+<td>600</td>
+<td>3</td>
+<td>115</td>
+<td>1250000</td>
+<td>1.0</td>
+<td>80</td>
+<td>Magearna</td>
+<td>NaN</td>
+<td>801</td>
+<td>130</td>
+<td>115</td>
+<td>65</td>
+<td>steel</td>
+<td>fairy</td>
+<td>80.5</td>
+<td>7</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>801 rows × 20 columns</p>
+</div>
+</div>
+</div>
+<p>Taking a look at the data output, we can see there are 20 columns total. We can then run the <code>info()</code> command on the dataset to get a breakdown of datatypes and more.</p>
+<p>As shown below, 16 of the 20 columns are numerical values. Of the 16, most of them are <em>discrete variables</em> since they are integer values such as:</p>
+<ul>
+<li><code>attack</code></li>
+<li><code>base_egg_steps</code></li>
+<li><code>base_happiness</code></li>
+<li><code>base_total</code></li>
+<li><code>defense</code></li>
+<li><code>experience_growth</code></li>
+<li><code>hp</code></li>
+<li><code>pokedex_number</code></li>
+<li><code>sp_attack</code></li>
+<li><code>sp_defense</code></li>
+<li><code>speed</code></li>
+<li><code>generation</code></li>
+<li><code>is_legendary</code></li>
+</ul>
+<p>The others are <em>continuous variables</em> because they can take on an infinite number of values within a given range: - <code>height_m</code> - <code>percentage_male</code> - <code>weight_kg</code></p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_source_result.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 801 entries, 0 to 800
+Data columns (total 20 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   attack             801 non-null    int64  
+ 1   base_egg_steps     801 non-null    int64  
+ 2   base_happiness     801 non-null    int64  
+ 3   base_total         801 non-null    int64  
+ 4   capture_rate       801 non-null    object 
+ 5   defense            801 non-null    int64  
+ 6   experience_growth  801 non-null    int64  
+ 7   height_m           781 non-null    float64
+ 8   hp                 801 non-null    int64  
+ 9   name               801 non-null    object 
+ 10  percentage_male    703 non-null    float64
+ 11  pokedex_number     801 non-null    int64  
+ 12  sp_attack          801 non-null    int64  
+ 13  sp_defense         801 non-null    int64  
+ 14  speed              801 non-null    int64  
+ 15  type1              801 non-null    object 
+ 16  type2              417 non-null    object 
+ 17  weight_kg          781 non-null    float64
+ 18  generation         801 non-null    int64  
+ 19  is_legendary       801 non-null    int64  
+dtypes: float64(3), int64(13), object(4)
+memory usage: 125.3+ KB</code></pre>
+</div>
+</div>
+<p>Getting specific columns that are important.</p>
+<p>There’s a lot of information in this file, with a lot of it being unnecessary at the moment.</p>
+<p>As a result, we’re going to filter for specific columns and we’re going to rename the columns. In this code, we filter for the <code>generation</code> and <code>is_legendary</code> column so we don’t have to rename every single column. Instead, we’re just renaming the columns that are important to us. We rename <code>generation</code> to <code>Generation</code> and <code>is_legendary</code> to <code>Legendary</code></p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>generation_legends <span class="op">=</span> data_source_result[[<span class="st">"generation"</span>, <span class="st">"is_legendary"</span>]]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>generation_legends <span class="op">=</span> generation_legends.rename(columns<span class="op">=</span>{<span class="st">'is_legendary'</span>:<span class="st">"Legendary"</span>, <span class="st">'generation'</span>:<span class="st">"Generation"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Afterwards, we determine how many legendary Pokemon are there for each generation.</p>
+<p>In this example, <code>generation</code> represents a discrete variable since it exists as an integer within a fixed range of 1-7.</p>
+<p>We find that the generation with the most legenedary Pokemon is generation 7. This is done by running the <code>groupby()</code> function on the <code>generation</code> column then subsequently running <code>agg</code> to find the number of legendary pokemon.</p>
+<p>Once we sort, it becomes increasingly clear which that Generations 7, 4, 5 are the most ripe with legendary Pokemon</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>legendary_per_generation <span class="op">=</span> generation_legends.groupby(<span class="st">"Generation"</span>).agg({<span class="st">"Legendary"</span>:<span class="st">"sum"</span>, <span class="st">"Generation"</span>:<span class="st">"first"</span>})</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>legendary_per_generation[[<span class="st">'Legendary'</span>]].sort_values(by<span class="op">=</span><span class="st">"Legendary"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/aniketadhikari/anaconda3/envs/homl3/lib/python3.10/site-packages/IPython/core/formatters.py:343: FutureWarning: In future versions `DataFrame.to_latex` is expected to utilise the base implementation of `Styler.to_latex` for formatting and rendering. The arguments signature may therefore change. It is recommended instead to use `DataFrame.style.to_latex` which also contains additional functionality.
+  return method()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="135">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Legendary</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Generation</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Getting the data, we can now visualize it on a bar graph to compare the number of legendary pokemon across generation.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>legendary_per_generation.plot(kind<span class="op">=</span><span class="st">"bar"</span>, x<span class="op">=</span><span class="st">"Generation"</span>, y<span class="op">=</span><span class="st">"Legendary"</span>, title<span class="op">=</span><span class="st">"Legendary Pokemon Per Generation"</span>, ylabel<span class="op">=</span><span class="st">"Number of Legendary Pokemon"</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.axis([<span class="op">-</span><span class="dv">1</span>,<span class="dv">7</span> , <span class="dv">0</span>, <span class="dv">25</span>])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="post1_files/figure-html/cell-7-output-1.png" width="590" height="448"></p>
+</div>
+</div>
+<p>So we’ve simply pointed out discrete variables and continuous variables here. We’ve managed to create a discrete variable by counting the number of legendary Pokemon. But what does this have to do with probability? Well we can take a closer look at Pokemon from a specific generation and break it down further. Here we can figure out what are the odds that a Pokemon from Generation 7 is classified as Legendary?</p>
+<p>We’ve already imported everything we need, so we need to start by filtering by the generation. Here we have filtered so that only Pokemon from generation 7 will appear.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>generation_num <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>gen7_pokemon <span class="op">=</span> data_source_result[data_source_result[<span class="st">'generation'</span>]<span class="op">==</span>generation_num]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we’ve gotten the specific Pokemon that we want, we also need to get the column we want. Here we are using the <code>is_legendary</code> column because we are evaluating which Pokemon are and aren’t legendary. While we could get the count of each, it is probably more meaningful to get percentage breakdowns of them. As a result, we use <code>value_counts</code> to get the probability of 0 or 1, but we also normalize the results so as to get percentage values rather than just a count.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>legendary_pokemon <span class="op">=</span> gen7_pokemon[<span class="st">'is_legendary'</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>legendary_percentages <span class="op">=</span> legendary_pokemon.value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From there, we use 0 and 1 as index values and the percentages that were calculated earlier are used as the values.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>legendary_percentages <span class="op">=</span> pd.Series(legendary_percentages.values, index<span class="op">=</span>legendary_pokemon.unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From there, I created a pie graph since we’re only comparing 2 values. As we can see, there is 78.75% non-legendary Pokemon and 21.25% legendary Pokemon in Generation 7.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>legendary_percentages.plot(kind<span class="op">=</span><span class="st">"pie"</span>, ylabel<span class="op">=</span><span class="st">""</span>, title<span class="op">=</span><span class="st">"</span><span class="sc">% o</span><span class="st">f Legendary Gen 7 Pokemon"</span>, labels<span class="op">=</span>[<span class="st">"Not Legendary"</span>, <span class="st">"Legendary"</span>], autopct<span class="op">=</span><span class="st">'</span><span class="sc">%.1f%%</span><span class="st">'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="post1_files/figure-html/cell-11-output-1.png" width="389" height="411"></p>
+</div>
+</div>
+<p>We could also factor in conditional probablity and Bayes’ Theorem. If we were to play a guessing game for every single Pokemon in this dataset, guessing the right Pokemon would be really challenging because there is over 800 Pokemon. We would have only a 0.12% chance of guessing right!</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>total_num_pokemon <span class="op">=</span> data_source_result[<span class="st">'pokedex_number'</span>].count()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>total_num_pokemon <span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="141">
+<pre><code>0.12484394506866417</code></pre>
+</div>
+</div>
+<p>But what if we found out that the Pokemon is in Generation 1 and is also a legendary pokemon? That would certainly increase our odds!</p>
+<p>Here we can filter for Pokemon that appear in Generation 1, filter for the legendary Pokemon, and then get the count which is 5.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gen1_pokemon <span class="op">=</span> data_source_result[data_source_result[<span class="st">'generation'</span>]<span class="op">==</span><span class="dv">1</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>legendary_gen1 <span class="op">=</span> gen1_pokemon[gen1_pokemon[<span class="st">'is_legendary'</span>]<span class="op">==</span><span class="dv">1</span>]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>legendary_gen1_count <span class="op">=</span> legendary_gen1[<span class="st">'name'</span>].count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then do 1 divided by the count to get our new odds. We have improved our guessing odds from 0.1% to 20%!</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>legendary_gen1_count <span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
+<pre><code>20.0</code></pre>
+</div>
+</div>
+<p>This showcasing <em>Bayes’ Theorem</em>, which suggests bringing in new evidence will effect the outcome of the event. In our case, we found out that the Pokemon we were looking for is in Generation 1 and Legendary. This narrowed down the choices Pokemon we can guess from</p>
+
+
 </section>
 
 </main> <!-- /main -->
