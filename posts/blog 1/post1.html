@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aniket Adhikari">
-<meta name="dcterms.date" content="2023-10-23">
+<meta name="dcterms.date" content="2023-11-13">
 
 <title>aniketadhikari.github.io ML Blog - Probability Theory</title>
 <style>
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 23, 2023</p>
+        <p class="date">November 13, 2023</p>
       </div>
     </div>
     
@@ -582,23 +582,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Taking a look at the data output, we can see there are 20 columns total. We can then run the <code>info()</code> command on the dataset to get a breakdown of datatypes and more.</p>
-<p>As shown below, 16 of the 20 columns are numerical values. Of the 16, most of them are <em>discrete variables</em> since they are integer values such as:</p>
+<p>As shown below, 16 of the 20 columns are numerical values. Of the 16, some of them are <em>discrete variables</em>:</p>
 <ul>
-<li><code>attack</code></li>
 <li><code>base_egg_steps</code></li>
 <li><code>base_happiness</code></li>
-<li><code>base_total</code></li>
-<li><code>defense</code></li>
 <li><code>experience_growth</code></li>
 <li><code>hp</code></li>
 <li><code>pokedex_number</code></li>
-<li><code>sp_attack</code></li>
-<li><code>sp_defense</code></li>
-<li><code>speed</code></li>
 <li><code>generation</code></li>
 <li><code>is_legendary</code></li>
 </ul>
-<p>The others are <em>continuous variables</em> because they can take on an infinite number of values within a given range: - <code>height_m</code> - <code>percentage_male</code> - <code>weight_kg</code></p>
+<p>The others are <em>continuous variables</em>:</p>
+<ul>
+<li><code>attack</code></li>
+<li><code>defense</code></li>
+<li><code>base_total</code></li>
+<li><code>sp_attack</code></li>
+<li><code>sp_defense</code></li>
+<li><code>height_m</code></li>
+<li><code>percentage_male</code></li>
+<li><code>speed</code></li>
+<li><code>weight_kg</code></li>
+</ul>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_source_result.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

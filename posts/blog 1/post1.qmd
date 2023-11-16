@@ -101,26 +101,27 @@ data_source_result
 ```
 Taking a look at the data output, we can see there are 20 columns total. We can then run the `info()` command on the dataset to get a breakdown of datatypes and more.
 
-As shown below, 16 of the 20 columns are numerical values. Of the 16, most of them are *discrete variables*  since they are integer values such as:
+As shown below, 16 of the 20 columns are numerical values. Of the 16, some of them are *discrete variables*:
 
-* `attack`
 * `base_egg_steps`
 * `base_happiness`
-* `base_total`
-* `defense`
 * `experience_growth`
 * `hp`
 * `pokedex_number`
-* `sp_attack`
-* `sp_defense`
-* `speed`
 * `generation`
 * `is_legendary`
 
-The others are *continuous variables* because they can take on an infinite number of values within a given range:
-- `height_m`
-- `percentage_male`
-- `weight_kg`
+The others are *continuous variables*:
+
+* `attack`
+* `defense`
+* `base_total`
+* `sp_attack`
+* `sp_defense`
+* `height_m`
+* `percentage_male`
+* `speed`
+* `weight_kg`
   
 ```{python}
 data_source_result.info()

@@ -64,4 +64,80 @@ K-Means groups data points into a predefined number of clusters, labeled as $k$.
 3. Recompute the centroids as the mean of all data points assigned to that cluster
 4. Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved. 
 
-We can actually apply K-Means clustering
+We can actually apply K-Means clustering in Python. Similar to the last post, I want to demonstrate how that can be done in code using a dataset of Pokemon from Generations 1-7.
+
+First we can start off by importing the libraries that are needed for the code.
+
+```{python}
+from sklearn.cluster import KMeans
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+We are then going to want to load our data. Again, it's from the Pokemon dataset.
+
+```{python}
+data = pd.read_csv("../../datasets/pokemon.csv", sep=",")
+data
+```
+
+Recall that clustering requires features to be **continuous variables**. In this dataset, we have a couple of different continuous variables, such as:
+
+* `attack`
+* `defense`
+* `base_total`
+* `sp_attack`
+* `sp_defense`
+* `height_m`
+* `percentage_male`
+* `speed`
+* `weight_kg`
+
+Some of these variables are kind of useless though, like `weight_kg`, `height_m`, and `percentage_male` because they aren't going to give us anything interesting. Instead we want to focus on the stats associated with each Pokemon. More specifically, we want to focus on `attack`, `defense`, `sp_attack`,  and `sp_defense`. Honestly, I had trouble trying to decide on whether I wanted to cluster based on `attack` and `defense` or `sp_attack` and `sp_defense`. As a result, I ended up combining them in a way so that `attack` and `sp_attack` add up to `total_attack` and `defense` and `sp_defense` add up to `total_defense`. 
+
+```{python}
+data['total_attack'] = data['attack'] + data['sp_attack']
+data['total_defense'] = data['defense'] + data['sp_defense']
+```
+
+Here we are storing data for `total_attack` and `total_defense` into variable `X`
+
+```{python}
+x_val = 'total_attack'
+y_val = 'total_defense'
+values = [x_val, y_val]
+X = data[values] 
+```
+
+After we have our data, we need to determine the number of clusters, or $k$. This is up to you, but I wanted to cluster it by 3 so we can have clusters of **weak**, **intermediate**, and **strong**. 
+
+```{python}
+kmeans = KMeans(n_clusters=3)
+```
+
+We then need to compute the K-Means clusters by using the `fit()` function. Here we supply the method with the data that was gathered earlier.
+```{python}
+kmeans.fit(X)
+```
+
+We can then store the labels of the cluster into `labels` so that it can be used for applying colors to each cluster with the `colormap` array
+```{python}
+labels = kmeans.labels_
+colormap = np.array(['red', 'green', 'blue'])
+```
+
+Afterwards, we are going to actually plot a scatter graph of the clustered data, using `total_attack` and `total_defense` as features
+
+```{python}
+plt.scatter(X['total_attack'], X['total_defense'], c=colormap[labels])
+plt.title('Pokemon Attack and Defense Clusters')
+plt.xlabel('Total Attack')
+plt.ylabel('Total Defense')
+
+plt.show()
+```
+
+In the above clustering, data points labeled in red are considered "weak", green are considered "intermediate", and blue is considered "strong.
+
+I'm going to be replaying Pokemon games over the winter break so I'm hoping this scatter will give me an indication as to what Pokemon I should catch!
