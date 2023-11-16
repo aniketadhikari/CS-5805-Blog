@@ -8,4 +8,60 @@ toc-title: "On this page"
 
 ---
 # Supervised Learning vs. Unsupervised Learning
-Before we talk about clustering, we must address some integral concepts related to it: supervised and unsupervised learning. *Supervised learning* is a machine learning technique that is used to train/teach a machine using **labeled** data. Labeled data implies that the data is already tagged with the correct answer. Teaching the machine on labeled data allows for future data to be correctly predicted
+Before we talk about clustering, we must address some integral concepts related to it: supervised and unsupervised learning. 
+
+*Supervised learning* is a machine learning technique that is used to train/teach a machine using **labeled** data. Labeled data implies that the data is already tagged with the correct answer. Teaching the machine on labeled data allows for future data to be correctly predicted.  Under the umbrella of supervised learning, there are 2 categories of algorithms:
+
+**Classification**: Output variable is a category, so we are looking to categorize the output
+**Regression**: Output variable is a real value, so we are looking to predict the value of the output
+
+*Unsupervised Learning* is a machine learning technique that uses used to train/teach a machine using that isn’t labeled or classified. The machine is now responsible for grouping the data according to similarities in characteristics without prior training. This is much harder because there is no “teacher” here, meaning the machine is tasked with finding the hidden structure in the unlabeled data.  Under the umbrella of unsupervised  learning, there are 2 categories of algorithms:
+
+**Clustering**: Grouping of cata to find similarities 
+**Association**: Discover riles that describe large portions of data
+
+|| Supervised Learning  | Unsupervised Learning |
+|--------|--------|--|
+| Input | Labeled Data  | Unlabeled, uncategorized |
+| Accuracy | Highly accurate   |Less acurate |
+| Output | Categorized or real values | Groupings|
+
+: Comparison of Supervised and Unsupervised Learning {tbl-colwidths="[25,25]"}
+
+# What is Clustering?
+As mentioned, clustering is a type of unsupervised learning. Here, we are grouping data so that each group, or cluster, exhibits similar qualities. Ultimately, the goal of clustering to uncover intrinsic patterns and structures within data that can be used for analysis. 
+
+# How Does Clustering Work?
+Algorithms that are focused on clustering measure similarity between data points across a set of features. Features should be continuous variables but can be categorical. However, categorical data needs special encoding. Data points in the cluster that appear close to each other based on the features are grouped together, which the data points that are far away are separated into different clusters. There are several approaches to clustering, including: 
+
+* **K-Means**: Grouping of data points in K clusters by minimizing the intra-cluster sum-of-squares. This requires setting the number of clusters up front, as we’ll see in the application section.
+* **Hierarchia**l: Hierarchy of clusters are built iteratively
+* **DBSCAN**: groups dense regions of points and considers the sparse areas as outliers. Intuitively detects arbitrary cluster shapes. 
+* **Gaussian Mixture Models**: Fits data as a mixture of Gaussian distributions where clusters are modeled using mean and covariance parameters. 
+
+# Clustering Use Cases
+So when is it a good time to use clustering? As mentioned, the best time to use clustering would be when we have data that is unlabeled. The following are more specific reasons to use clustering
+
+##  Exploratory Data Analysis 
+Clustering can help to reveal intrinsic groups and patterns in data without prior knowledge. It can open the door for further analysis by uncovering segements that were previously unknown
+
+## Customer Segementation 
+Cluster customers based on certain attributes like demographics, purchasing beahvior, and more to achieve targeted marketing
+
+## Social Network Analysis
+Identify communities within a social network by clustering nodes based on connectivity and usage patterns
+
+## Anomaly Detection
+Detect anomalous data points that might not fit into a cluster to detect potential fraud or network attacks.
+
+# K-Means Clustering
+K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. 
+## How Does It Work?
+K-Means groups data points into a predefined number of clusters, labeled as $k$. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows: 
+
+1. Initialize $k$ random centroids for the clusters 
+2. Assign each data point to its closest centroid point based on Euclidean distance 
+3. Recompute the centroids as the mean of all data points assigned to that cluster
+4. Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved. 
+
+We can actually apply K-Means clustering

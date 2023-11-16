@@ -147,7 +147,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-clustering" id="toc-what-is-clustering" class="nav-link active" data-scroll-target="#what-is-clustering">What is Clustering?</a></li>
+  <li><a href="#supervised-learning-vs.-unsupervised-learning" id="toc-supervised-learning-vs.-unsupervised-learning" class="nav-link active" data-scroll-target="#supervised-learning-vs.-unsupervised-learning">Supervised Learning vs.&nbsp;Unsupervised Learning</a></li>
+  <li><a href="#what-is-clustering" id="toc-what-is-clustering" class="nav-link" data-scroll-target="#what-is-clustering">What is Clustering?</a></li>
+  <li><a href="#how-does-clustering-work" id="toc-how-does-clustering-work" class="nav-link" data-scroll-target="#how-does-clustering-work">How Does Clustering Work?</a></li>
   </ul>
 </nav>
     </div>
@@ -157,8 +159,59 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="supervised-learning-vs.-unsupervised-learning" class="level1">
+<h1>Supervised Learning vs.&nbsp;Unsupervised Learning</h1>
+<p>Before we talk about clustering, we must address some integral concepts related to it: supervised and unsupervised learning.</p>
+<p><em>Supervised learning</em> is a machine learning technique that is used to train/teach a machine using <strong>labeled</strong> data. Labeled data implies that the data is already tagged with the correct answer. Teaching the machine on labeled data allows for future data to be correctly predicted. Under the umbrella of supervised learning, there are 2 categories of algorithms:</p>
+<p><strong>Classification</strong>: Output variable is a category, so we are looking to categorize the output <strong>Regression</strong>: Output variable is a real value, so we are looking to predict the value of the output</p>
+<p><em>Unsupervised Learning</em> is a machine learning technique that uses used to train/teach a machine using that isn’t labeled or classified. The machine is now responsible for grouping the data according to similarities in characteristics without prior training. This is much harder because there is no “teacher” here, meaning the machine is tasked with finding the hidden structure in the unlabeled data. Under the umbrella of unsupervised learning, there are 2 categories of algorithms:</p>
+<p><strong>Clustering</strong>: Grouping of cata to find similarities <strong>Association</strong>: Discover riles that describe large portions of data</p>
+<table class="table">
+<caption>Comparison of Supervised and Unsupervised Learning</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Supervised Learning</th>
+<th>Unsupervised Learning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Input</td>
+<td>Labeled Data</td>
+<td>Unlabeled, uncategorized</td>
+</tr>
+<tr class="even">
+<td>Accuracy</td>
+<td>Highly accurate</td>
+<td>Less acurate</td>
+</tr>
+<tr class="odd">
+<td>Output</td>
+<td>Categorized or real values</td>
+<td>Groupings</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="what-is-clustering" class="level1">
 <h1>What is Clustering?</h1>
+<p>As mentioned, clustering is a type of unsupervised learning. Here, we are grouping data so that each group, or cluster, exhibits similar qualities. Ultimately, the goal of clustering to uncover intrinsic patterns and structures within data that can be used for analysis.</p>
+</section>
+<section id="how-does-clustering-work" class="level1">
+<h1>How Does Clustering Work?</h1>
+<p>Algorithms that are focused on clustering measure similarity between data points across a set of features. Features should be continuous variables but can be categorical. However, categorical data needs special encoding. Data points in the cluster that appear close to each other based on the features are grouped together, which the data points that are far away are separated into different clusters. There are several approaches to clustering, including:</p>
+<ul>
+<li><strong>K-Means</strong>: Grouping of data points in K clusters by minimizing the intra-cluster sum-of-squares. This requires setting the number of clusters up front, as we’ll see in the application section.</li>
+<li><strong>Hierarchia</strong>l: Hierarchy of clusters are built iteratively</li>
+<li><strong>DBSCAN</strong>: groups dense regions of points and considers the sparse areas as outliers. Intuitively detects arbitrary cluster shapes.</li>
+<li><strong>Gaussian Mixture Models</strong>: Fits data as a mixture of Gaussian distributions where clusters are modeled using mean and covariance parameters.</li>
+</ul>
 
 
 </section>
