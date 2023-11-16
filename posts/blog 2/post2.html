@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -61,7 +95,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -150,6 +189,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#supervised-learning-vs.-unsupervised-learning" id="toc-supervised-learning-vs.-unsupervised-learning" class="nav-link active" data-scroll-target="#supervised-learning-vs.-unsupervised-learning">Supervised Learning vs.&nbsp;Unsupervised Learning</a></li>
   <li><a href="#what-is-clustering" id="toc-what-is-clustering" class="nav-link" data-scroll-target="#what-is-clustering">What is Clustering?</a></li>
   <li><a href="#how-does-clustering-work" id="toc-how-does-clustering-work" class="nav-link" data-scroll-target="#how-does-clustering-work">How Does Clustering Work?</a></li>
+  <li><a href="#clustering-use-cases" id="toc-clustering-use-cases" class="nav-link" data-scroll-target="#clustering-use-cases">Clustering Use Cases</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+  <li><a href="#customer-segementation" id="toc-customer-segementation" class="nav-link" data-scroll-target="#customer-segementation">Customer Segementation</a></li>
+  <li><a href="#social-network-analysis" id="toc-social-network-analysis" class="nav-link" data-scroll-target="#social-network-analysis">Social Network Analysis</a></li>
+  <li><a href="#anomaly-detection" id="toc-anomaly-detection" class="nav-link" data-scroll-target="#anomaly-detection">Anomaly Detection</a></li>
+  </ul></li>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-Means Clustering</a></li>
   </ul>
 </nav>
     </div>
@@ -212,6 +259,393 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>DBSCAN</strong>: groups dense regions of points and considers the sparse areas as outliers. Intuitively detects arbitrary cluster shapes.</li>
 <li><strong>Gaussian Mixture Models</strong>: Fits data as a mixture of Gaussian distributions where clusters are modeled using mean and covariance parameters.</li>
 </ul>
+</section>
+<section id="clustering-use-cases" class="level1">
+<h1>Clustering Use Cases</h1>
+<p>So when is it a good time to use clustering? As mentioned, the best time to use clustering would be when we have data that is unlabeled. The following are more specific reasons to use clustering</p>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<p>Clustering can help to reveal intrinsic groups and patterns in data without prior knowledge. It can open the door for further analysis by uncovering segements that were previously unknown</p>
+</section>
+<section id="customer-segementation" class="level2">
+<h2 class="anchored" data-anchor-id="customer-segementation">Customer Segementation</h2>
+<p>Cluster customers based on certain attributes like demographics, purchasing beahvior, and more to achieve targeted marketing</p>
+</section>
+<section id="social-network-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="social-network-analysis">Social Network Analysis</h2>
+<p>Identify communities within a social network by clustering nodes based on connectivity and usage patterns</p>
+</section>
+<section id="anomaly-detection" class="level2">
+<h2 class="anchored" data-anchor-id="anomaly-detection">Anomaly Detection</h2>
+<p>Detect anomalous data points that might not fit into a cluster to detect potential fraud or network attacks.</p>
+</section>
+</section>
+<section id="k-means-clustering" class="level1">
+<h1>K-Means Clustering</h1>
+<p>K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. ## How Does It Work? K-Means groups data points into a predefined number of clusters, labeled as <span class="math inline">\(k\)</span>. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows:</p>
+<ol type="1">
+<li>Initialize <span class="math inline">\(k\)</span> random centroids for the clusters</li>
+<li>Assign each data point to its closest centroid point based on Euclidean distance</li>
+<li>Recompute the centroids as the mean of all data points assigned to that cluster</li>
+<li>Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved.</li>
+</ol>
+<p>We can actually apply K-Means clustering in Python. Similar to the last post, I want to demonstrate how that can be done in code using a dataset of Pokemon from Generations 1-7.</p>
+<p>First we can start off by importing the libraries that are needed for the code.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We are then going to want to load our data. Again, it’s from the Pokemon dataset.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"../../datasets/pokemon.csv"</span>, sep<span class="op">=</span><span class="st">","</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">attack</th>
+<th data-quarto-table-cell-role="th">base_egg_steps</th>
+<th data-quarto-table-cell-role="th">base_happiness</th>
+<th data-quarto-table-cell-role="th">base_total</th>
+<th data-quarto-table-cell-role="th">capture_rate</th>
+<th data-quarto-table-cell-role="th">defense</th>
+<th data-quarto-table-cell-role="th">experience_growth</th>
+<th data-quarto-table-cell-role="th">height_m</th>
+<th data-quarto-table-cell-role="th">hp</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">percentage_male</th>
+<th data-quarto-table-cell-role="th">pokedex_number</th>
+<th data-quarto-table-cell-role="th">sp_attack</th>
+<th data-quarto-table-cell-role="th">sp_defense</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">type1</th>
+<th data-quarto-table-cell-role="th">type2</th>
+<th data-quarto-table-cell-role="th">weight_kg</th>
+<th data-quarto-table-cell-role="th">generation</th>
+<th data-quarto-table-cell-role="th">is_legendary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>49</td>
+<td>5120</td>
+<td>70</td>
+<td>318</td>
+<td>45</td>
+<td>49</td>
+<td>1059860</td>
+<td>0.7</td>
+<td>45</td>
+<td>Bulbasaur</td>
+<td>88.1</td>
+<td>1</td>
+<td>65</td>
+<td>65</td>
+<td>45</td>
+<td>grass</td>
+<td>poison</td>
+<td>6.9</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>62</td>
+<td>5120</td>
+<td>70</td>
+<td>405</td>
+<td>45</td>
+<td>63</td>
+<td>1059860</td>
+<td>1.0</td>
+<td>60</td>
+<td>Ivysaur</td>
+<td>88.1</td>
+<td>2</td>
+<td>80</td>
+<td>80</td>
+<td>60</td>
+<td>grass</td>
+<td>poison</td>
+<td>13.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>100</td>
+<td>5120</td>
+<td>70</td>
+<td>625</td>
+<td>45</td>
+<td>123</td>
+<td>1059860</td>
+<td>2.0</td>
+<td>80</td>
+<td>Venusaur</td>
+<td>88.1</td>
+<td>3</td>
+<td>122</td>
+<td>120</td>
+<td>80</td>
+<td>grass</td>
+<td>poison</td>
+<td>100.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>52</td>
+<td>5120</td>
+<td>70</td>
+<td>309</td>
+<td>45</td>
+<td>43</td>
+<td>1059860</td>
+<td>0.6</td>
+<td>39</td>
+<td>Charmander</td>
+<td>88.1</td>
+<td>4</td>
+<td>60</td>
+<td>50</td>
+<td>65</td>
+<td>fire</td>
+<td>NaN</td>
+<td>8.5</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>64</td>
+<td>5120</td>
+<td>70</td>
+<td>405</td>
+<td>45</td>
+<td>58</td>
+<td>1059860</td>
+<td>1.1</td>
+<td>58</td>
+<td>Charmeleon</td>
+<td>88.1</td>
+<td>5</td>
+<td>80</td>
+<td>65</td>
+<td>80</td>
+<td>fire</td>
+<td>NaN</td>
+<td>19.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">796</td>
+<td>101</td>
+<td>30720</td>
+<td>0</td>
+<td>570</td>
+<td>25</td>
+<td>103</td>
+<td>1250000</td>
+<td>9.2</td>
+<td>97</td>
+<td>Celesteela</td>
+<td>NaN</td>
+<td>797</td>
+<td>107</td>
+<td>101</td>
+<td>61</td>
+<td>steel</td>
+<td>flying</td>
+<td>999.9</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">797</td>
+<td>181</td>
+<td>30720</td>
+<td>0</td>
+<td>570</td>
+<td>255</td>
+<td>131</td>
+<td>1250000</td>
+<td>0.3</td>
+<td>59</td>
+<td>Kartana</td>
+<td>NaN</td>
+<td>798</td>
+<td>59</td>
+<td>31</td>
+<td>109</td>
+<td>grass</td>
+<td>steel</td>
+<td>0.1</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">798</td>
+<td>101</td>
+<td>30720</td>
+<td>0</td>
+<td>570</td>
+<td>15</td>
+<td>53</td>
+<td>1250000</td>
+<td>5.5</td>
+<td>223</td>
+<td>Guzzlord</td>
+<td>NaN</td>
+<td>799</td>
+<td>97</td>
+<td>53</td>
+<td>43</td>
+<td>dark</td>
+<td>dragon</td>
+<td>888.0</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">799</td>
+<td>107</td>
+<td>30720</td>
+<td>0</td>
+<td>600</td>
+<td>3</td>
+<td>101</td>
+<td>1250000</td>
+<td>2.4</td>
+<td>97</td>
+<td>Necrozma</td>
+<td>NaN</td>
+<td>800</td>
+<td>127</td>
+<td>89</td>
+<td>79</td>
+<td>psychic</td>
+<td>NaN</td>
+<td>230.0</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">800</td>
+<td>95</td>
+<td>30720</td>
+<td>0</td>
+<td>600</td>
+<td>3</td>
+<td>115</td>
+<td>1250000</td>
+<td>1.0</td>
+<td>80</td>
+<td>Magearna</td>
+<td>NaN</td>
+<td>801</td>
+<td>130</td>
+<td>115</td>
+<td>65</td>
+<td>steel</td>
+<td>fairy</td>
+<td>80.5</td>
+<td>7</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>801 rows × 20 columns</p>
+</div>
+</div>
+</div>
+<p>Recall that clustering requires features to be <strong>continuous variables</strong>. In this dataset, we have a couple of different continuous variables, such as:</p>
+<ul>
+<li><code>attack</code></li>
+<li><code>defense</code></li>
+<li><code>base_total</code></li>
+<li><code>sp_attack</code></li>
+<li><code>sp_defense</code></li>
+<li><code>height_m</code></li>
+<li><code>percentage_male</code></li>
+<li><code>speed</code></li>
+<li><code>weight_kg</code></li>
+</ul>
+<p>Some of these variables are kind of useless though, like <code>weight_kg</code>, <code>height_m</code>, and <code>percentage_male</code> because they aren’t going to give us anything interesting. Instead we want to focus on the stats associated with each Pokemon. More specifically, we want to focus on <code>attack</code>, <code>defense</code>, <code>sp_attack</code>, and <code>sp_defense</code>. Honestly, I had trouble trying to decide on whether I wanted to cluster based on <code>attack</code> and <code>defense</code> or <code>sp_attack</code> and <code>sp_defense</code>. As a result, I ended up combining them in a way so that <code>attack</code> and <code>sp_attack</code> add up to <code>total_attack</code> and <code>defense</code> and <code>sp_defense</code> add up to <code>total_defense</code>.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'total_attack'</span>] <span class="op">=</span> data[<span class="st">'attack'</span>] <span class="op">+</span> data[<span class="st">'sp_attack'</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'total_defense'</span>] <span class="op">=</span> data[<span class="st">'defense'</span>] <span class="op">+</span> data[<span class="st">'sp_defense'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we are storing data for <code>total_attack</code> and <code>total_defense</code> into variable <code>X</code></p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x_val <span class="op">=</span> <span class="st">'total_attack'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> <span class="st">'total_defense'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [x_val, y_val]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[values] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After we have our data, we need to determine the number of clusters, or <span class="math inline">\(k\)</span>. This is up to you, but I wanted to cluster it by 3 so we can have clusters of <strong>weak</strong>, <strong>intermediate</strong>, and <strong>strong</strong>.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then need to compute the K-Means clusters by using the <code>fit()</code> function. Here we supply the method with the data that was gathered earlier.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>kmeans.fit(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KMeans(n_clusters=3)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KMeans</label><div class="sk-toggleable__content"><pre>KMeans(n_clusters=3)</pre></div></div></div></div></div>
+</div>
+</div>
+<p>We can then store the labels of the cluster into <code>labels</code> so that it can be used for applying colors to each cluster with the <code>colormap</code> array</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> kmeans.labels_</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>colormap <span class="op">=</span> np.array([<span class="st">'red'</span>, <span class="st">'green'</span>, <span class="st">'blue'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Afterwards, we are going to actually plot a scatter graph of the clustered data, using <code>total_attack</code> and <code>total_defense</code> as features</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[<span class="st">'total_attack'</span>], X[<span class="st">'total_defense'</span>], c<span class="op">=</span>colormap[labels])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Pokemon Attack and Defense Clusters'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Total Attack'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Defense'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="post2_files/figure-html/cell-9-output-1.png" width="593" height="449"></p>
+</div>
+</div>
+<p>In the above clustering, data points labeled in red are considered “weak”, green are considered “intermediate”, and blue is considered “strong.</p>
+<p>I’m going to be replaying Pokemon games over the winter break so I’m hoping this scatter will give me an indication as to what Pokemon I should catch!</p>
 
 
 </section>
