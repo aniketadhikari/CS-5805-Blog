@@ -7,5 +7,5 @@ toc: true
 toc-title: "On this page"
 
 ---
-
-# What is Clustering?
+# Supervised Learning vs. Unsupervised Learning
+Before we talk about clustering, we must address some integral concepts related to it: supervised and unsupervised learning. *Supervised learning* is a machine learning technique that is used to train/teach a machine using **labeled** data. Labeled data implies that the data is already tagged with the correct answer. Teaching the machine on labeled data allows for future data to be correctly predicted
