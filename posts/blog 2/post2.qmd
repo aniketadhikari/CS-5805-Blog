@@ -1,5 +1,6 @@
 ---
 title: "Clustering"
+subtitle: "Using Python to Group Data Based on Similarities"
 author: "Aniket Adhikari"
 date: "2023-11-15"
 date-modified: "2023-11-16"
@@ -12,13 +13,13 @@ Before we talk about clustering, we must address some integral concepts related 
 
 *Supervised learning* is a machine learning technique that is used to train/teach a machine using **labeled** data. Labeled data implies that the data is already tagged with the correct answer. Teaching the machine on labeled data allows for future data to be correctly predicted.  Under the umbrella of supervised learning, there are 2 categories of algorithms:
 
-**Classification**: Output variable is a category, so we are looking to categorize the output
-**Regression**: Output variable is a real value, so we are looking to predict the value of the output
+* **Classification**: Output variable is a category, so we are looking to categorize the output
+* **Regression**: Output variable is a real value, so we are looking to predict the value of the output
 
 *Unsupervised Learning* is a machine learning technique that uses used to train/teach a machine using that isn’t labeled or classified. The machine is now responsible for grouping the data according to similarities in characteristics without prior training. This is much harder because there is no “teacher” here, meaning the machine is tasked with finding the hidden structure in the unlabeled data.  Under the umbrella of unsupervised  learning, there are 2 categories of algorithms:
 
-**Clustering**: Grouping of cata to find similarities 
-**Association**: Discover riles that describe large portions of data
+* **Clustering**: Grouping of cata to find similarities 
+* **Association**: Discover riles that describe large portions of data
 
 || Supervised Learning  | Unsupervised Learning |
 |--------|--------|--|
@@ -48,19 +49,36 @@ So when is it a good time to use clustering? As mentioned, the best time to use 
 4. **Anomaly Detection**: Detect anomalous data points that might not fit into a cluster to detect potential fraud or network attacks.
 
 # K-Means Clustering
-K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. 
-## How Does K-Means Work?
-K-Means groups data points into a predefined number of clusters, labeled as $k$. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows: 
+K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. The 
 
-1. Initialize $k$ random centroids for the clusters 
+K-Means partitions a dataset into a predefined number of clusters, $k$. It does this by minimizing the sum of distances between each data point and its assigned centroid, also known as the within-cluster sum of squares (WCSS). 
+
+## Process of K-Means Clustering?
+
+1. Select $k$ initial centroids for the clusters 
 2. Assign each data point to its closest centroid point based on Euclidean distance 
 3. Recompute the centroids as the mean of all data points assigned to that cluster
-4. Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved. 
+4. Repeat steps 2-3 until convergence, meaning the centrods no longer change between iterations
+
+## Choosing the Number of Clusters $k$
+When choosing the number of clusters for K-Means it's important to choose the right number of clusters because it affects the quality of clustering. 
+
+You could simply try different integer values to represent $k$ through a process of guessing-and-checking. Then, you could examine which one of $k$ values produces clustering visuals that makes the most sense for your data. 
+
+Another way to select $k$ is the *elbow method*, which involves plotting the WCSS vs. $k$. The part of the curve that is shaped like an elbow will contain what is likely a good choice for the $k$
+
+![Elbow Method from O'Reilly](https://www.oreilly.com/api/v2/epubs/9781788295758/files/assets/995b8b58-06f1-4884-a2a1-f3648428e947.png)
+
+There is also the *silhouette method*, which measures how well each data point fits into its assigned cluster compared to other clusters and selects the $k$ with the highest average silhouette score.
 
 ## Example of K-Means Clustering
 We can actually apply K-Means clustering in Python. Similar to the last post, I want to demonstrate how that can be done in code using a dataset of Pokemon from Generations 1-7.
 
-First we can start off by importing the libraries that are needed for the code.
+First we can start off by importing the libraries that are needed for the code. In addition to the same libraries from the previous post, `pandas` and `matplotlib`, we are going to import `numpy` as well as `KMeans` from `sklearn.cluster`. 
+
+`numpy` will simply be used for transforming a python array of colors into something that can be used for designating clusters to be of certain colors.
+
+`KMeans` will be used for the actual clustering.
 
 ```{python}
 from sklearn.cluster import KMeans
@@ -69,7 +87,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 ```
 
-We are then going to want to load our data. Again, it's from the Pokemon dataset.
+We are then going to want to load our data. Again, it's from the Pokemon dataset and it's comma-separated.
 
 ```{python}
 data = pd.read_csv("../../datasets/pokemon.csv", sep=",")
@@ -162,7 +180,7 @@ from sklearn.mixture import GaussianMixture
 import matplotlib.pyplot as plt
 ```
 
-The dataset being imported consists of customer data, including information such as 
+This time, I wanted to a different dataset because the one with Pokemon didn't seem to be creating clusters very well. The dataset being imported consists of customer data, including information such as 
 
 * `Gender`
 * `Age`

@@ -1,6 +1,6 @@
 ---
 title: "Probability Theory"
-subtitle: "Pokemon Generations 1-7"
+subtitle: "Using Python to Show tshe Basics of Probability"
 author: "Aniket Adhikari"
 date: "2023-11-13"
 date-modified: "2023-11-15"

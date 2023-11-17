@@ -148,6 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Clustering</h1>
+            <p class="subtitle lead">Using Python to Group Data Based on Similarities</p>
                       </div>
   </div>
     
@@ -192,6 +193,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#clustering-use-cases" id="toc-clustering-use-cases" class="nav-link" data-scroll-target="#clustering-use-cases">Clustering Use Cases</a></li>
   <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-Means Clustering</a>
   <ul class="collapse">
+  <li><a href="#process-of-k-means-clustering" id="toc-process-of-k-means-clustering" class="nav-link" data-scroll-target="#process-of-k-means-clustering">Process of K-Means Clustering?</a></li>
+  <li><a href="#choosing-the-number-of-clusters-k" id="toc-choosing-the-number-of-clusters-k" class="nav-link" data-scroll-target="#choosing-the-number-of-clusters-k">Choosing the Number of Clusters <span class="math inline">\(k\)</span></a></li>
   <li><a href="#example-of-k-means-clustering" id="toc-example-of-k-means-clustering" class="nav-link" data-scroll-target="#example-of-k-means-clustering">Example of K-Means Clustering</a></li>
   </ul></li>
   <li><a href="#gaussian-mixture-models-gmms" id="toc-gaussian-mixture-models-gmms" class="nav-link" data-scroll-target="#gaussian-mixture-models-gmms">Gaussian Mixture Models (GMMs)</a>
@@ -212,9 +215,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Supervised Learning vs.&nbsp;Unsupervised Learning</h1>
 <p>Before we talk about clustering, we must address some integral concepts related to it: supervised and unsupervised learning.</p>
 <p><em>Supervised learning</em> is a machine learning technique that is used to train/teach a machine using <strong>labeled</strong> data. Labeled data implies that the data is already tagged with the correct answer. Teaching the machine on labeled data allows for future data to be correctly predicted. Under the umbrella of supervised learning, there are 2 categories of algorithms:</p>
-<p><strong>Classification</strong>: Output variable is a category, so we are looking to categorize the output <strong>Regression</strong>: Output variable is a real value, so we are looking to predict the value of the output</p>
+<ul>
+<li><strong>Classification</strong>: Output variable is a category, so we are looking to categorize the output</li>
+<li><strong>Regression</strong>: Output variable is a real value, so we are looking to predict the value of the output</li>
+</ul>
 <p><em>Unsupervised Learning</em> is a machine learning technique that uses used to train/teach a machine using that isn’t labeled or classified. The machine is now responsible for grouping the data according to similarities in characteristics without prior training. This is much harder because there is no “teacher” here, meaning the machine is tasked with finding the hidden structure in the unlabeled data. Under the umbrella of unsupervised learning, there are 2 categories of algorithms:</p>
-<p><strong>Clustering</strong>: Grouping of cata to find similarities <strong>Association</strong>: Discover riles that describe large portions of data</p>
+<ul>
+<li><strong>Clustering</strong>: Grouping of cata to find similarities</li>
+<li><strong>Association</strong>: Discover riles that describe large portions of data</li>
+</ul>
 <table class="table">
 <caption>Comparison of Supervised and Unsupervised Learning</caption>
 <colgroup>
@@ -274,13 +283,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="k-means-clustering" class="level1">
 <h1>K-Means Clustering</h1>
-<p>K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. ## How Does K-Means Work? K-Means groups data points into a predefined number of clusters, labeled as <span class="math inline">\(k\)</span>. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows:</p>
+<p>K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. The</p>
+<p>K-Means partitions a dataset into a predefined number of clusters, <span class="math inline">\(k\)</span>. It does this by minimizing the sum of distances between each data point and its assigned centroid, also known as the within-cluster sum of squares (WCSS).</p>
+<section id="process-of-k-means-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="process-of-k-means-clustering">Process of K-Means Clustering?</h2>
 <ol type="1">
-<li>Initialize <span class="math inline">\(k\)</span> random centroids for the clusters</li>
+<li>Select <span class="math inline">\(k\)</span> initial centroids for the clusters</li>
 <li>Assign each data point to its closest centroid point based on Euclidean distance</li>
 <li>Recompute the centroids as the mean of all data points assigned to that cluster</li>
-<li>Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved.</li>
+<li>Repeat steps 2-3 until convergence, meaning the centrods no longer change between iterations</li>
 </ol>
+</section>
+<section id="choosing-the-number-of-clusters-k" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-the-number-of-clusters-k">Choosing the Number of Clusters <span class="math inline">\(k\)</span></h2>
+<p>When choosing the number of clusters for K-Means it’s important to choose the right number of clusters because it affects the quality of clustering.</p>
+<p>You could simply try different integer values to represent <span class="math inline">\(k\)</span> through a process of guessing-and-checking. Then, you could examine which one of <span class="math inline">\(k\)</span> values produces clustering visuals that makes the most sense for your data.</p>
+<p>Another way to select <span class="math inline">\(k\)</span> is the <em>elbow method</em>, which involves plotting the WCSS vs.&nbsp;<span class="math inline">\(k\)</span>. The part of the curve that is shaped like an elbow will contain what is likely a good choice for the <span class="math inline">\(k\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.oreilly.com/api/v2/epubs/9781788295758/files/assets/995b8b58-06f1-4884-a2a1-f3648428e947.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Elbow Method from O’Reilly</figcaption>
+</figure>
+</div>
+</section>
 <section id="example-of-k-means-clustering" class="level2">
 <h2 class="anchored" data-anchor-id="example-of-k-means-clustering">Example of K-Means Clustering</h2>
 <p>We can actually apply K-Means clustering in Python. Similar to the last post, I want to demonstrate how that can be done in code using a dataset of Pokemon from Generations 1-7.</p>
