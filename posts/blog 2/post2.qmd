@@ -228,3 +228,70 @@ plt.ylabel("Income")
 plt.suptitle('Customer Segmentation using GMM')
 plt.show()
 ```
+
+# DBSCAN
+DBSCAN, or Denity-Based Spaital Clustering of Applications with Noise, is a type of clustering that is density-based. So instead of assuming that clusters are spherical like K-Means does, DBSCAN can identify clusters of arbitrary shapes. DBSCAN is good at finding arbitrary shaped clusters, identify points of noise, and handling outliers well.
+
+## How Does It Work? 
+DBSCAN views clusters are areas of high density separated by areas of low density. 
+
+1. DBSCAN starts by picking an arbitrary unseen point in the dataset
+2. It then finds all the points connected to the starting point that are within the specified radius which is desginated as the EPS
+3. If there are a ton of points in the EPS radius, a cluster is initialized. Otherwise, the point is labeled as an outlier or noise. 
+4. DBSCAN then iteratively grows the cluster by finding all the points connected to existing points in the cluster that are within the EPS radius
+5. If the point isn't reachable by any of the clusters, then the point is marked as noise
+
+Before running DBSCAN, we can specify a minimum number of points that to form a cluster and then the EPS radius. 
+
+## Example of DBSCAN
+Here we start with doing the same stuff as before, importing the relevant libraries and loading the Pokemon data
+```{python}
+import pandas as pd
+from sklearn.cluster import DBSCAN
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+df = pd.read_csv('../../datasets/pokemon.csv')
+```
+
+We then create 2 columns `Total Attack` and `Total Defense`, which will be combinations of `attack` and `sp_attack` and `defense` and `sp_defense`
+
+```{python}
+df['Total Attack'] = df['attack'] + df['sp_attack']
+df['Total Defense'] = df['defense'] + df['sp_defense']
+```
+
+We then want to extract these 2 columns from the overall dataset.
+```{python}
+# Extract features to cluster on 
+X = df[['Total Attack', 'Total Defense']]
+```
+
+with `StandardScaler()`, the features are standardized by removing mean and scaling to unit variable.
+
+```{python}
+scaler = StandardScaler()
+pokemon_stats_scaled = scaler.fit_transform(X)
+pokemon_stats_scaled
+```
+
+We can then proceed to create a DBSCAN object. We set the `eps` variable to 0.25, which has neighors within a 0.25 radius clustered. Additionally, `min_samples` is set to 1, which is the number of data points in a neighborhood needed for a point to be considered a core point.
+
+```{python}
+dbscan = DBSCAN(eps=0.25, min_samples=1)
+```
+
+Afterwards, we fit the data to the DBSCAN object we just created.
+```{python}
+clusters = dbscan.fit_predict(pokemon_stats_scaled)
+```
+
+Finally, we create a scatterplot that visualizes `Total Attack` and `Total Defense`. 
+
+We can see that most of the data is dense towards the area of red. Data points that aren't red are considered outliers, meaning they're Pokemon that are really weak or really strong in terms of `Total Attack` and `Total Defense`
+```{python}
+plt.scatter(X['Total Attack'], X['Total Defense'], c=clusters, cmap='Set1', s=50, alpha=0.7)
+plt.title('DBSCAN Clustering of Pokemon Stats')
+plt.xlabel('Attack')
+plt.ylabel('Defense')
+plt.show()
+```

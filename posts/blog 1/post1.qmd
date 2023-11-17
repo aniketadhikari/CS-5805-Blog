@@ -192,7 +192,7 @@ We could also factor in conditional probablity and Bayes' Theorem. If we were to
 
 ```{python}
 total_num_pokemon = data_source_result['pokedex_number'].count()
-1/total_num_pokemon * 100
+1/total_num_pokemon 
 ```
 
 But what if we found out that the Pokemon is in Generation 1 and is also a legendary pokemon? That would certainly increase our odds!
@@ -208,7 +208,7 @@ legendary_gen1_count = legendary_gen1['name'].count()
 We then do 1 divided by the count to get our new odds. We have improved our guessing odds from 0.1% to 20%!
 
 ```{python}
-1/legendary_gen1_count * 100
+1/legendary_gen1_count 
 ```
 
-This showcasing *Bayes' Theorem*, which suggests bringing in new evidence will effect the outcome of the event. In our case, we found out that the Pokemon we were looking for is in Generation 1 and Legendary. This narrowed down the choices Pokemon we can guess from
+This showcasing *Bayes' Theorem*, which suggests bringing in new evidence will effect the outcome of the event. In our case, we found out that the Pokemon we were looking for is in Generation 1 and Legendary. 

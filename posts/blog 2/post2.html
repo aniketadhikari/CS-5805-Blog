@@ -202,6 +202,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-does-gmms-work" id="toc-how-does-gmms-work" class="nav-link" data-scroll-target="#how-does-gmms-work">How Does GMMs Work</a></li>
   <li><a href="#example-of-gmm" id="toc-example-of-gmm" class="nav-link" data-scroll-target="#example-of-gmm">Example of GMM</a></li>
   </ul></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan">DBSCAN</a>
+  <ul class="collapse">
+  <li><a href="#how-does-it-work" id="toc-how-does-it-work" class="nav-link" data-scroll-target="#how-does-it-work">How Does It Work?</a></li>
+  <li><a href="#example-of-dbscan" id="toc-example-of-dbscan" class="nav-link" data-scroll-target="#example-of-dbscan">Example of DBSCAN</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -734,6 +739,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="post2_files/figure-html/cell-15-output-1.png" width="619" height="477"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="dbscan" class="level1">
+<h1>DBSCAN</h1>
+<p>DBSCAN, or Denity-Based Spaital Clustering of Applications with Noise, is a type of clustering that is density-based. So instead of assuming that clusters are spherical like K-Means does, DBSCAN can identify clusters of arbitrary shapes. DBSCAN is good at finding arbitrary shaped clusters, identify points of noise, and handling outliers well.</p>
+<section id="how-does-it-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-it-work">How Does It Work?</h2>
+<p>DBSCAN views clusters are areas of high density separated by areas of low density.</p>
+<ol type="1">
+<li>DBSCAN starts by picking an arbitrary unseen point in the dataset</li>
+<li>It then finds all the points connected to the starting point that are within the specified radius which is desginated as the EPS</li>
+<li>If there are a ton of points in the EPS radius, a cluster is initialized. Otherwise, the point is labeled as an outlier or noise.</li>
+<li>DBSCAN then iteratively grows the cluster by finding all the points connected to existing points in the cluster that are within the EPS radius</li>
+<li>If the point isn’t reachable by any of the clusters, then the point is marked as noise</li>
+</ol>
+<p>Before running DBSCAN, we can specify a minimum number of points that to form a cluster and then the EPS radius.</p>
+</section>
+<section id="example-of-dbscan" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-dbscan">Example of DBSCAN</h2>
+<p>Here we start with doing the same stuff as before, importing the relevant libraries and loading the Pokemon data</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../datasets/pokemon.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then create 2 columns <code>Total Attack</code> and <code>Total Defense</code>, which will be combinations of <code>attack</code> and <code>sp_attack</code> and <code>defense</code> and <code>sp_defense</code></p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Total Attack'</span>] <span class="op">=</span> df[<span class="st">'attack'</span>] <span class="op">+</span> df[<span class="st">'sp_attack'</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Total Defense'</span>] <span class="op">=</span> df[<span class="st">'defense'</span>] <span class="op">+</span> df[<span class="st">'sp_defense'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then want to extract these 2 columns from the overall dataset.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract features to cluster on </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">'Total Attack'</span>, <span class="st">'Total Defense'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>with <code>StandardScaler()</code>, the features are standardized by removing mean and scaling to unit variable.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>pokemon_stats_scaled <span class="op">=</span> scaler.fit_transform(X)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>pokemon_stats_scaled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>array([[-0.65942537, -0.5835015 ],
+       [-0.13433866, -0.01794378],
+       [ 1.36590908,  1.93225527],
+       ...,
+       [ 0.91583476, -0.73951743],
+       [ 1.59094624,  0.89864978],
+       [ 1.42216837,  1.6787294 ]])</code></pre>
+</div>
+</div>
+<p>We can then proceed to create a DBSCAN object. We set the <code>eps</code> variable to 0.25, which has neighors within a 0.25 radius clustered. Additionally, <code>min_samples</code> is set to 1, which is the number of data points in a neighborhood needed for a point to be considered a core point.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.25</span>, min_samples<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Afterwards, we fit the data to the DBSCAN object we just created.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>clusters <span class="op">=</span> dbscan.fit_predict(pokemon_stats_scaled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, we create a scatterplot that visualizes <code>Total Attack</code> and <code>Total Defense</code>.</p>
+<p>We can see that most of the data is dense towards the area of red. Data points that aren’t red are considered outliers, meaning they’re Pokemon that are really weak or really strong in terms of <code>Total Attack</code> and <code>Total Defense</code></p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[<span class="st">'Total Attack'</span>], X[<span class="st">'Total Defense'</span>], c<span class="op">=</span>clusters, cmap<span class="op">=</span><span class="st">'Set1'</span>, s<span class="op">=</span><span class="dv">50</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'DBSCAN Clustering of Pokemon Stats'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Attack'</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Defense'</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="post2_files/figure-html/cell-22-output-1.png" width="593" height="449"></p>
 </div>
 </div>
 

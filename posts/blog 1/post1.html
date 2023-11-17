@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Probability Theory</h1>
-            <p class="subtitle lead">Pokemon Generations 1-7</p>
+            <p class="subtitle lead">Using Python to Show tshe Basics of Probability</p>
                       </div>
   </div>
     
@@ -735,9 +735,9 @@ memory usage: 125.3+ KB</code></pre>
 <p>We could also factor in conditional probablity and Bayes’ Theorem. If we were to play a guessing game for every single Pokemon in this dataset, guessing the right Pokemon would be really challenging because there is over 800 Pokemon. We would have only a 0.12% chance of guessing right!</p>
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>total_num_pokemon <span class="op">=</span> data_source_result[<span class="st">'pokedex_number'</span>].count()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>total_num_pokemon <span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>total_num_pokemon </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>0.12484394506866417</code></pre>
+<pre><code>0.0012484394506866417</code></pre>
 </div>
 </div>
 <p>But what if we found out that the Pokemon is in Generation 1 and is also a legendary pokemon? That would certainly increase our odds!</p>
@@ -749,9 +749,9 @@ memory usage: 125.3+ KB</code></pre>
 </div>
 <p>We then do 1 divided by the count to get our new odds. We have improved our guessing odds from 0.1% to 20%!</p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>legendary_gen1_count <span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>legendary_gen1_count </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>20.0</code></pre>
+<pre><code>0.2</code></pre>
 </div>
 </div>
 <p>This showcasing <em>Bayes’ Theorem</em>, which suggests bringing in new evidence will effect the outcome of the event. In our case, we found out that the Pokemon we were looking for is in Generation 1 and Legendary. This narrowed down the choices Pokemon we can guess from</p>
