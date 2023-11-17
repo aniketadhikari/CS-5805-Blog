@@ -2,7 +2,7 @@
 title: "Clustering"
 author: "Aniket Adhikari"
 date: "2023-11-15"
-date-modified: "2023-11-15"
+date-modified: "2023-11-16"
 toc: true
 toc-title: "On this page"
 
@@ -201,7 +201,7 @@ cluster_labels = gmm.predict(customer_features)
 customer_data['Cluster'] = cluster_labels
 ```
 
-Finally, we plot the data on a scatterplot.
+Finally, we plot the data on a scatterplot using `Age` and `Annual Income ($)`.
 
 ```{python}
 plt.scatter(x=customer_data["Age"], y=customer_data["Annual Income ($)"], c=cluster_labels, cmap="Set1")
