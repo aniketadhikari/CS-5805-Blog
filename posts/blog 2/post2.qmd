@@ -142,6 +142,7 @@ plt.show()
 In the above clustering, data points labeled in red are considered "weak", green are considered "intermediate", and blue is considered "strong.
 
 I'm going to be replaying Pokemon games over the winter break so I'm hoping this scatter will give me an indication as to what Pokemon I should catch!
+
 # Gaussian Mixture Models (GMMs)
 Gausian Mixture Models (GMMs) are probabilistic models that assumes data points are generated from a mixture of Gaussian distributions. GMMs are a popular clustering algorithm with applications such as density estimation, data compression, and more. 
 
@@ -153,3 +154,59 @@ The GMM fitting process determines the parameters of each Gaussian as well as th
 The number of Gaussian components corresponds to the number of clusters. Choosing the right number of clusters is important to avoid underfitting or overfitting.
 
 ## Example of GMM
+Here we are importing a couple of different libraries that have been used before. We are importing `GaussianMixture` in order to create Gaussian Mixture Models.
+
+```{python}
+import pandas as pd
+from sklearn.mixture import GaussianMixture
+import matplotlib.pyplot as plt
+```
+
+The dataset being imported consists of customer data, including information such as 
+
+* `Gender`
+* `Age`
+* `Annual Income ($)`
+* `Spending Score (1-100)`
+* `Profession`
+* `Work Experience`
+* `Family Size`
+
+```{python}
+customer_data = pd.read_csv('../../datasets/Customers.csv')
+```
+
+I am particularly interested in using variables that are continuous, which are `Age`, `Annual Income`, and `Work Experience`. We are using these variables as features for segmentation
+
+```{python}
+selected_features = ['Age', 'Annual Income ($)', 'Work Experience']
+```
+
+Here we are preprocessing by extracting and scaling the selected features
+
+```{python}
+customer_features = customer_data[selected_features]
+customer_features = (customer_features - customer_features.mean()) / customer_features.std()
+```
+
+We can create a GMM by creating 3 clusters of the data and then fitting it based on the preprocessed data. 
+
+We are then predicting the labels and then assigning it to a column called `Cluster`
+
+```{python}
+num_clusters = 3
+gmm = GaussianMixture(n_components=num_clusters)
+gmm.fit(customer_features)
+cluster_labels = gmm.predict(customer_features)
+customer_data['Cluster'] = cluster_labels
+```
+
+Finally, we plot the data on a scatterplot.
+
+```{python}
+plt.scatter(x=customer_data["Age"], y=customer_data["Annual Income ($)"], c=cluster_labels, cmap="Set2")
+plt.xlabel("Age")
+plt.ylabel("Income")
+plt.suptitle('Customer Segmentation using GMM')
+plt.show()
+```
