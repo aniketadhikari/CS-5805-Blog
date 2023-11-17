@@ -204,7 +204,7 @@ customer_data['Cluster'] = cluster_labels
 Finally, we plot the data on a scatterplot.
 
 ```{python}
-plt.scatter(x=customer_data["Age"], y=customer_data["Annual Income ($)"], c=cluster_labels, cmap="Set2")
+plt.scatter(x=customer_data["Age"], y=customer_data["Annual Income ($)"], c=cluster_labels, cmap="Set1")
 plt.xlabel("Age")
 plt.ylabel("Income")
 plt.suptitle('Customer Segmentation using GMM')

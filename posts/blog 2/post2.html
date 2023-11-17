@@ -190,7 +190,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-is-clustering" id="toc-what-is-clustering" class="nav-link" data-scroll-target="#what-is-clustering">What is Clustering?</a></li>
   <li><a href="#how-does-clustering-work" id="toc-how-does-clustering-work" class="nav-link" data-scroll-target="#how-does-clustering-work">How Does Clustering Work?</a></li>
   <li><a href="#clustering-use-cases" id="toc-clustering-use-cases" class="nav-link" data-scroll-target="#clustering-use-cases">Clustering Use Cases</a></li>
-  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-Means Clustering</a></li>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-Means Clustering</a>
+  <ul class="collapse">
+  <li><a href="#example-of-k-means-clustering" id="toc-example-of-k-means-clustering" class="nav-link" data-scroll-target="#example-of-k-means-clustering">Example of K-Means Clustering</a></li>
+  </ul></li>
+  <li><a href="#gaussian-mixture-models-gmms" id="toc-gaussian-mixture-models-gmms" class="nav-link" data-scroll-target="#gaussian-mixture-models-gmms">Gaussian Mixture Models (GMMs)</a>
+  <ul class="collapse">
+  <li><a href="#how-does-gmms-work" id="toc-how-does-gmms-work" class="nav-link" data-scroll-target="#how-does-gmms-work">How Does GMMs Work</a></li>
+  <li><a href="#example-of-gmm" id="toc-example-of-gmm" class="nav-link" data-scroll-target="#example-of-gmm">Example of GMM</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -249,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Algorithms that are focused on clustering measure similarity between data points across a set of features. Features should be continuous variables but can be categorical. However, categorical data needs special encoding. Data points in the cluster that appear close to each other based on the features are grouped together, which the data points that are far away are separated into different clusters. There are several approaches to clustering, including:</p>
 <ul>
 <li><strong>K-Means</strong>: Grouping of data points in K clusters by minimizing the intra-cluster sum-of-squares. This requires setting the number of clusters up front, as we’ll see in the application section.</li>
-<li><strong>Hierarchia</strong>l: Hierarchy of clusters are built iteratively</li>
+<li><strong>Hierarchial</strong>: Hierarchy of clusters are built iteratively</li>
 <li><strong>DBSCAN</strong>: groups dense regions of points and considers the sparse areas as outliers. Intuitively detects arbitrary cluster shapes.</li>
 <li><strong>Gaussian Mixture Models</strong>: Fits data as a mixture of Gaussian distributions where clusters are modeled using mean and covariance parameters.</li>
 </ul>
@@ -266,13 +274,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="k-means-clustering" class="level1">
 <h1>K-Means Clustering</h1>
-<p>K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. ## How Does It Work? K-Means groups data points into a predefined number of clusters, labeled as <span class="math inline">\(k\)</span>. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows:</p>
+<p>K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. ## How Does K-Means Work? K-Means groups data points into a predefined number of clusters, labeled as <span class="math inline">\(k\)</span>. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows:</p>
 <ol type="1">
 <li>Initialize <span class="math inline">\(k\)</span> random centroids for the clusters</li>
 <li>Assign each data point to its closest centroid point based on Euclidean distance</li>
 <li>Recompute the centroids as the mean of all data points assigned to that cluster</li>
 <li>Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved.</li>
 </ol>
+<section id="example-of-k-means-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-k-means-clustering">Example of K-Means Clustering</h2>
 <p>We can actually apply K-Means clustering in Python. Similar to the last post, I want to demonstrate how that can be done in code using a dataset of Pokemon from Generations 1-7.</p>
 <p>First we can start off by importing the libraries that are needed for the code.</p>
 <div class="cell" data-execution_count="1">
@@ -588,15 +598,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>speed</code></li>
 <li><code>weight_kg</code></li>
 </ul>
-<p>Some of these variables are kind of useless though, like <code>weight_kg</code>, <code>height_m</code>, and <code>percentage_male</code> because they aren’t going to give us anything interesting. Instead we want to focus on the stats associated with each Pokemon. More specifically, we want to focus on <code>attack</code>, <code>defense</code>, <code>sp_attack</code>, and <code>sp_defense</code>. Honestly, I had trouble trying to decide on whether I wanted to cluster based on <code>attack</code> and <code>defense</code> or <code>sp_attack</code> and <code>sp_defense</code>. As a result, I ended up combining them in a way so that <code>attack</code> and <code>sp_attack</code> add up to <code>total_attack</code> and <code>defense</code> and <code>sp_defense</code> add up to <code>total_defense</code>.</p>
+<p>Some of these variables are kind of useless though because they aren’t going to give us anything interesting. Instead we want to focus on the stats associated with each Pokemon. More specifically, we want to focus on</p>
+<ul>
+<li><code>attack</code></li>
+<li><code>defense</code></li>
+<li><code>sp_attack</code></li>
+<li><code>sp_defense</code></li>
+</ul>
+<p>Honestly, I had trouble trying to decide on whether I wanted to cluster based on <code>attack</code> and <code>defense</code> or <code>sp_attack</code> and <code>sp_defense</code>. As a result, I ended up combining them in a way so that <code>attack</code> and <code>sp_attack</code> add up to <code>total_attack</code> and <code>defense</code> and <code>sp_defense</code> add up to <code>total_defense</code>.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'total_attack'</span>] <span class="op">=</span> data[<span class="st">'attack'</span>] <span class="op">+</span> data[<span class="st">'sp_attack'</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'total_defense'</span>] <span class="op">=</span> data[<span class="st">'defense'</span>] <span class="op">+</span> data[<span class="st">'sp_defense'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Total Attack'</span>] <span class="op">=</span> data[<span class="st">'attack'</span>] <span class="op">+</span> data[<span class="st">'sp_attack'</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Total Defense'</span>] <span class="op">=</span> data[<span class="st">'defense'</span>] <span class="op">+</span> data[<span class="st">'sp_defense'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we are storing data for <code>total_attack</code> and <code>total_defense</code> into variable <code>X</code></p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x_val <span class="op">=</span> <span class="st">'total_attack'</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> <span class="st">'total_defense'</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x_val <span class="op">=</span> <span class="st">'Total Attack'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> <span class="st">'Total Defense'</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [x_val, y_val]</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[values] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -618,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Afterwards, we are going to actually plot a scatter graph of the clustered data, using <code>total_attack</code> and <code>total_defense</code> as features</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[<span class="st">'total_attack'</span>], X[<span class="st">'total_defense'</span>], c<span class="op">=</span>colormap[labels])</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[<span class="st">'Total Attack'</span>], X[<span class="st">'Total Defense'</span>], c<span class="op">=</span>colormap[labels])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Pokemon Attack and Defense Clusters'</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Total Attack'</span>)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Defense'</span>)</span>
@@ -630,8 +647,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In the above clustering, data points labeled in red are considered “weak”, green are considered “intermediate”, and blue is considered “strong.</p>
 <p>I’m going to be replaying Pokemon games over the winter break so I’m hoping this scatter will give me an indication as to what Pokemon I should catch!</p>
+</section>
+</section>
+<section id="gaussian-mixture-models-gmms" class="level1">
+<h1>Gaussian Mixture Models (GMMs)</h1>
+<p>Gausian Mixture Models (GMMs) are probabilistic models that assumes data points are generated from a mixture of Gaussian distributions. GMMs are a popular clustering algorithm with applications such as density estimation, data compression, and more.</p>
+<section id="how-does-gmms-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-gmms-work">How Does GMMs Work</h2>
+<p>A GMM models each cluster as a Gaussian distribuion, characterized by a mean and covariance matrix. The complete model is a weighted sum of the component Gaussian densities.</p>
+<p>The GMM fitting process determines the parameters of each Gaussian as well as the mixture weights. This is done through iterative expectation-maximiation algorithm that converges to find the maximum likelihood estimates.</p>
+<p>The number of Gaussian components corresponds to the number of clusters. Choosing the right number of clusters is important to avoid underfitting or overfitting.</p>
+</section>
+<section id="example-of-gmm" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-gmm">Example of GMM</h2>
+<p>Here we are importing a couple of different libraries that have been used before. We are importing <code>GaussianMixture</code> in order to create Gaussian Mixture Models.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.mixture <span class="im">import</span> GaussianMixture</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The dataset being imported consists of customer data, including information such as</p>
+<ul>
+<li><code>Gender</code></li>
+<li><code>Age</code></li>
+<li><code>Annual Income ($)</code></li>
+<li><code>Spending Score (1-100)</code></li>
+<li><code>Profession</code></li>
+<li><code>Work Experience</code></li>
+<li><code>Family Size</code></li>
+</ul>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>customer_data <span class="op">=</span> pd.read_csv(<span class="st">'../../datasets/Customers.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I am particularly interested in using variables that are continuous, which are <code>Age</code>, <code>Annual Income</code>, and <code>Work Experience</code>. We are using these variables as features for segmentation</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> [<span class="st">'Age'</span>, <span class="st">'Annual Income ($)'</span>, <span class="st">'Work Experience'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we are preprocessing by extracting and scaling the selected features</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>customer_features <span class="op">=</span> customer_data[selected_features]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>customer_features <span class="op">=</span> (customer_features <span class="op">-</span> customer_features.mean()) <span class="op">/</span> customer_features.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can create a GMM by creating 3 clusters of the data and then fitting it based on the preprocessed data.</p>
+<p>We are then predicting the labels and then assigning it to a column called <code>Cluster</code></p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>num_clusters <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>gmm <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span>num_clusters)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>gmm.fit(customer_features)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> gmm.predict(customer_features)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>customer_data[<span class="st">'Cluster'</span>] <span class="op">=</span> cluster_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, we plot the data on a scatterplot.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(x<span class="op">=</span>customer_data[<span class="st">"Age"</span>], y<span class="op">=</span>customer_data[<span class="st">"Annual Income ($)"</span>], c<span class="op">=</span>cluster_labels, cmap<span class="op">=</span><span class="st">"Set2"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Income"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Customer Segmentation using GMM'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="post2_files/figure-html/cell-15-output-1.png" width="619" height="477"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
