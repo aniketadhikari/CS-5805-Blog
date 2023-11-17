@@ -1,11 +1,9 @@
 ---
 title: "Linear and nonlinear regression"
+subtitle: "Using Python to Differentiate Linear and Non-Linear Regression"
 author: "Aniket Adhikari"
-date: "2023-09-20"
+date: "2023-11-15"
+date-modified: "2023-11-17"
+toc: true
+toc-title: "On this page"
 ---
-
-This is the first post in a Quarto blog. Welcome!
-
-![](thumbnail.jpg)
-
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
