@@ -35,28 +35,21 @@ As mentioned, clustering is a type of unsupervised learning. Here, we are groupi
 Algorithms that are focused on clustering measure similarity between data points across a set of features. Features should be continuous variables but can be categorical. However, categorical data needs special encoding. Data points in the cluster that appear close to each other based on the features are grouped together, which the data points that are far away are separated into different clusters. There are several approaches to clustering, including: 
 
 * **K-Means**: Grouping of data points in K clusters by minimizing the intra-cluster sum-of-squares. This requires setting the number of clusters up front, as we’ll see in the application section.
-* **Hierarchia**l: Hierarchy of clusters are built iteratively
+* **Hierarchial**: Hierarchy of clusters are built iteratively
 * **DBSCAN**: groups dense regions of points and considers the sparse areas as outliers. Intuitively detects arbitrary cluster shapes. 
 * **Gaussian Mixture Models**: Fits data as a mixture of Gaussian distributions where clusters are modeled using mean and covariance parameters. 
 
 # Clustering Use Cases
 So when is it a good time to use clustering? As mentioned, the best time to use clustering would be when we have data that is unlabeled. The following are more specific reasons to use clustering
 
-##  Exploratory Data Analysis 
-Clustering can help to reveal intrinsic groups and patterns in data without prior knowledge. It can open the door for further analysis by uncovering segements that were previously unknown
-
-## Customer Segementation 
-Cluster customers based on certain attributes like demographics, purchasing beahvior, and more to achieve targeted marketing
-
-## Social Network Analysis
-Identify communities within a social network by clustering nodes based on connectivity and usage patterns
-
-## Anomaly Detection
-Detect anomalous data points that might not fit into a cluster to detect potential fraud or network attacks.
+1. **Exploratory Data Analysis**: Clustering can help to reveal intrinsic groups and patterns in data without prior knowledge. It can open the door for further analysis by uncovering segements that were previously unknown
+2. **Customer Segementation**: Cluster customers based on certain attributes like demographics, purchasing beahvior, and more to achieve targeted marketing
+3. **Social Network Analysis**: Identify communities within a social network by clustering nodes based on connectivity and usage patterns
+4. **Anomaly Detection**: Detect anomalous data points that might not fit into a cluster to detect potential fraud or network attacks.
 
 # K-Means Clustering
 K-Means is one of the most popular clustering algorithms that is used for discovering intrinsic groups in unlabeled data. 
-## How Does It Work?
+## How Does K-Means Work?
 K-Means groups data points into a predefined number of clusters, labeled as $k$. It does this by minimizing the intra-cluster sum-of-squares. The general process is as follows: 
 
 1. Initialize $k$ random centroids for the clusters 
@@ -64,6 +57,7 @@ K-Means groups data points into a predefined number of clusters, labeled as $k$.
 3. Recompute the centroids as the mean of all data points assigned to that cluster
 4. Repeat steps 2-3 until the centroids converge or the maximum number of iterations is achieved. 
 
+## Example of K-Means Clustering
 We can actually apply K-Means clustering in Python. Similar to the last post, I want to demonstrate how that can be done in code using a dataset of Pokemon from Generations 1-7.
 
 First we can start off by importing the libraries that are needed for the code.
@@ -94,18 +88,25 @@ Recall that clustering requires features to be **continuous variables**. In this
 * `speed`
 * `weight_kg`
 
-Some of these variables are kind of useless though, like `weight_kg`, `height_m`, and `percentage_male` because they aren't going to give us anything interesting. Instead we want to focus on the stats associated with each Pokemon. More specifically, we want to focus on `attack`, `defense`, `sp_attack`,  and `sp_defense`. Honestly, I had trouble trying to decide on whether I wanted to cluster based on `attack` and `defense` or `sp_attack` and `sp_defense`. As a result, I ended up combining them in a way so that `attack` and `sp_attack` add up to `total_attack` and `defense` and `sp_defense` add up to `total_defense`. 
+Some of these variables are kind of useless though because they aren't going to give us anything interesting. Instead we want to focus on the stats associated with each Pokemon. More specifically, we want to focus on 
+
+* `attack`
+* `defense`
+* `sp_attack`
+* `sp_defense`
+
+Honestly, I had trouble trying to decide on whether I wanted to cluster based on `attack` and `defense` or `sp_attack` and `sp_defense`. As a result, I ended up combining them in a way so that `attack` and `sp_attack` add up to `total_attack` and `defense` and `sp_defense` add up to `total_defense`. 
 
 ```{python}
-data['total_attack'] = data['attack'] + data['sp_attack']
-data['total_defense'] = data['defense'] + data['sp_defense']
+data['Total Attack'] = data['attack'] + data['sp_attack']
+data['Total Defense'] = data['defense'] + data['sp_defense']
 ```
 
 Here we are storing data for `total_attack` and `total_defense` into variable `X`
 
 ```{python}
-x_val = 'total_attack'
-y_val = 'total_defense'
+x_val = 'Total Attack'
+y_val = 'Total Defense'
 values = [x_val, y_val]
 X = data[values] 
 ```
@@ -130,7 +131,7 @@ colormap = np.array(['red', 'green', 'blue'])
 Afterwards, we are going to actually plot a scatter graph of the clustered data, using `total_attack` and `total_defense` as features
 
 ```{python}
-plt.scatter(X['total_attack'], X['total_defense'], c=colormap[labels])
+plt.scatter(X['Total Attack'], X['Total Defense'], c=colormap[labels])
 plt.title('Pokemon Attack and Defense Clusters')
 plt.xlabel('Total Attack')
 plt.ylabel('Total Defense')
@@ -141,3 +142,14 @@ plt.show()
 In the above clustering, data points labeled in red are considered "weak", green are considered "intermediate", and blue is considered "strong.
 
 I'm going to be replaying Pokemon games over the winter break so I'm hoping this scatter will give me an indication as to what Pokemon I should catch!
+# Gaussian Mixture Models (GMMs)
+Gausian Mixture Models (GMMs) are probabilistic models that assumes data points are generated from a mixture of Gaussian distributions. GMMs are a popular clustering algorithm with applications such as density estimation, data compression, and more. 
+
+## How Does GMMs Work
+A GMM models each cluster as a Gaussian distribuion, characterized by a mean and covariance matrix. The complete model is a weighted sum of the component Gaussian densities.
+
+The GMM fitting process determines the parameters of each Gaussian as well as the mixture weights. This is done through iterative expectation-maximiation algorithm that converges to find the maximum likelihood estimates.
+
+The number of Gaussian components corresponds to the number of clusters. Choosing the right number of clusters is important to avoid underfitting or overfitting.
+
+## Example of GMM
