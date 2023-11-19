@@ -8,9 +8,58 @@ toc: true
 toc-title: "On this page"
 ---
 
-Regression analysis is a powerful statistical method for estimating the relationship between a dependent and independent variable. FYI: an independent variable is the value that affects the outcome of a dependent variable. The independent variable is often referred to as the explanatory variable because it explains the reason for a certain outcome, or dependent variable. Dependent variables are usually represented by $y$ and independent varaibles are represented by $x$. 
+Regression analysis is a powerful statistical method for estimating the relationship between a dependent and independent variable. Regression analysis leverages historical data to make predictions and comes in 2 forms: linear and non-linear regression.
+
+<u>Side note</u>: an **independent variable** is the value that affects the outcome of a dependent variable and is often referred to as the explanatory variable because it explains the reason for a certain outcome, or **dependent variable**. Dependent variables are usually represented by $y$ and independent varaibles are represented by $x$. 
 
 # Linear Regression
+## What is Linear Regression
+Linear regression is the more commonly used regression technique and assumes that there is a linear relationship between the independent variable ($x$) and dependent variable ($y$). Linear regression features a *best-fitting line*, which is a straight line that goes through all of the data points and it determined by minimizing the residual sum of squares (RSS) between the predicted and actual values. The general equation for linear regression looks like this: 
+
+$Y = mx + b$
+
+* $y =$ dependent variable
+* $m =$ slope of the line
+* $x =$ independent variable
+* $b =$ slope intercept
+
+## Importance of Linear Regression 
+With the use of linear regression, we have a relatively simple and easy-to-interpret formula for making predictions based on historical data. As a result, it is heavily used in industries such as: 
+
+**Finance**
+
+Using past financial statements, economic indicators, and historical prices to predict: 
+
+* Predicting stock prices
+* Predicting bond yields
+* Predicting future exchange rates
+
+**Economics**
+
+Using information like policy changes, taxes, and spending to predict:
+
+* GDP
+* Inflation
+* Unemployment Rates 
+
+**Sports**
+
+Using past team/player performance and rankings to predict:
+
+* Outcome of games
+* Make power rankings for teams 
+* Come up with betting lines 
+* Future player performance
+
+**Transportation**
+
+Using weight, distance, route, and fuel costs to predict:
+
+* Transportation costs
+* Delivery times 
+* Gas consumption 
+
+
 
 
 # Non-linear Regression
