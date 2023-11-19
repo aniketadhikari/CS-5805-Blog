@@ -73,7 +73,9 @@ Using weight, distance, route, and fuel costs to predict:
 |Simple Linear Regression|Models the relationship between a dependent variable and a single independent variable using the previously mentioned linear equation |
 |Multiple Linear Regression|Models the relationship between multiple dependent variables and multiple independent variables using a linear equation|
 |Polynomial Regression|Special case of linear regression in which the relationship between the independent variable $x$ and the dependent variable $y$ is modeled as an nth degree polynomial, like $x^2$, $x^3$|
-|Stepwise Regression| Involves selecting the most significant variables for inclusion in the model while excluding less significant ones.|
+|Stepwise Regression|Involves selecting the most significant variables for inclusion in the model while excluding less significant ones.|
 : {.striped .hover}
+
+## Application
 
 # Non-linear Regression
