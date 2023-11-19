@@ -8,6 +8,9 @@ toc: true
 toc-title: "On this page"
 ---
 
+Regression analysis is a powerful statistical method for estimating the relationship between a dependent and independent variable. FYI: an independent variable is the value that affects the outcome of a dependent variable. The independent variable is often referred to as the explanatory variable because it explains the reason for a certain outcome, or dependent variable. Dependent variables are usually represented by $y$ and independent varaibles are represented by $x$. 
+
 # Linear Regression
+
 
 # Non-linear Regression
