@@ -155,6 +155,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-is-linear-regression" id="toc-what-is-linear-regression" class="nav-link" data-scroll-target="#what-is-linear-regression">What is Linear Regression</a></li>
   <li><a href="#importance-of-linear-regression" id="toc-importance-of-linear-regression" class="nav-link" data-scroll-target="#importance-of-linear-regression">Importance of Linear Regression</a></li>
   <li><a href="#requirements-for-linear-regression" id="toc-requirements-for-linear-regression" class="nav-link" data-scroll-target="#requirements-for-linear-regression">Requirements for Linear Regression</a></li>
+  <li><a href="#types-of-linear-regression" id="toc-types-of-linear-regression" class="nav-link" data-scroll-target="#types-of-linear-regression">Types of Linear Regression</a></li>
   </ul></li>
   <li><a href="#non-linear-regression" id="toc-non-linear-regression" class="nav-link" data-scroll-target="#non-linear-regression">Non-linear Regression</a></li>
   </ul>
@@ -219,9 +220,43 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Make sure to use a scatterplot to quickly determine whether there is a linear relationship between 2 variables. Even though there might be a relationship between 2 variables, we have to ensure that the relationship is truly linear. Otherwise, the variables might be better suites for a non-linear regression, which I’ll talk about later.</li>
 <li>Remove outliers that may disproportionately influence the regression line</li>
-<li>Scale/standardize independent variables</li>
+<li>Independent variables should be scaled/standardized to have a normal distribution</li>
 <li>Dependent variable should be a continuous numeric variable</li>
 </ul>
+</section>
+<section id="types-of-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-linear-regression">Types of Linear Regression</h2>
+<table class="table-striped table-hover table">
+<caption></caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Simple Linear Regression</td>
+<td>Models the relationship between a dependent variable and a single independent variable using the previously mentioned linear equation</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Multiple Linear Regression</td>
+<td>Models the relationship between multiple dependent variables and multiple independent variables using a linear equation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Polynomial Regression</td>
+<td>Special case of linear regression in which the relationship between the independent variable <span class="math inline">\(x\)</span> and the dependent variable <span class="math inline">\(y\)</span> is modeled as an nth degree polynomial, like <span class="math inline">\(x^2\)</span>, <span class="math inline">\(x^3\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Stepwise Regression</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="non-linear-regression" class="level1">

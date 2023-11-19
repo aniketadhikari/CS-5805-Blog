@@ -66,4 +66,14 @@ Using weight, distance, route, and fuel costs to predict:
 * Independent variables should be scaled/standardized to have a normal distribution
 * Dependent variable should be a continuous numeric variable
 
+## Types of Linear Regression
+
+| Type  | Description |
+|:----:|------------|
+|Simple Linear Regression|Models the relationship between a dependent variable and a single independent variable using the previously mentioned linear equation |
+|Multiple Linear Regression|Models the relationship between multiple dependent variables and multiple independent variables using a linear equation|
+|Polynomial Regression|Special case of linear regression in which the relationship between the independent variable $x$ and the dependent variable $y$ is modeled as an nth degree polynomial, like $x^2$, $x^3$|
+|Stepwise Regression| Involves selecting the most significant variables for inclusion in the model while excluding less significant ones.|
+: {.striped .hover}
+
 # Non-linear Regression
