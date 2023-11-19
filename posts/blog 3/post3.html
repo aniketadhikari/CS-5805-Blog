@@ -152,7 +152,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression">Linear Regression</a>
   <ul class="collapse">
+  <li><a href="#what-is-linear-regression" id="toc-what-is-linear-regression" class="nav-link" data-scroll-target="#what-is-linear-regression">What is Linear Regression</a></li>
   <li><a href="#importance-of-linear-regression" id="toc-importance-of-linear-regression" class="nav-link" data-scroll-target="#importance-of-linear-regression">Importance of Linear Regression</a></li>
+  <li><a href="#requirements-for-linear-regression" id="toc-requirements-for-linear-regression" class="nav-link" data-scroll-target="#requirements-for-linear-regression">Requirements for Linear Regression</a></li>
   </ul></li>
   <li><a href="#non-linear-regression" id="toc-non-linear-regression" class="nav-link" data-scroll-target="#non-linear-regression">Non-linear Regression</a></li>
   </ul>
@@ -168,6 +170,8 @@ ul.task-list li input[type="checkbox"] {
 <p><u>Side note</u>: an <strong>independent variable</strong> is the value that affects the outcome of a dependent variable and is often referred to as the explanatory variable because it explains the reason for a certain outcome, or <strong>dependent variable</strong>. Dependent variables are usually represented by <span class="math inline">\(y\)</span> and independent varaibles are represented by <span class="math inline">\(x\)</span>.</p>
 <section id="linear-regression" class="level1">
 <h1>Linear Regression</h1>
+<section id="what-is-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-linear-regression">What is Linear Regression</h2>
 <p>Linear regression is the more commonly used regression technique and assumes that there is a linear relationship between the independent variable (<span class="math inline">\(x\)</span>) and dependent variable (<span class="math inline">\(y\)</span>). Linear regression features a <em>best-fitting line</em>, which is a straight line that goes through all of the data points and it determined by minimizing the residual sum of squares (RSS) between the predicted and actual values. The general equation for linear regression looks like this:</p>
 <p><span class="math inline">\(Y = mx + b\)</span></p>
 <ul>
@@ -176,6 +180,7 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(x =\)</span> independent variable</li>
 <li><span class="math inline">\(b =\)</span> slope intercept</li>
 </ul>
+</section>
 <section id="importance-of-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="importance-of-linear-regression">Importance of Linear Regression</h2>
 <p>With the use of linear regression, we have a relatively simple and easy-to-interpret formula for making predictions based on historical data. As a result, it is heavily used in industries such as:</p>
@@ -207,6 +212,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Transportation costs</li>
 <li>Delivery times</li>
 <li>Gas consumption</li>
+</ul>
+</section>
+<section id="requirements-for-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="requirements-for-linear-regression">Requirements for Linear Regression</h2>
+<ul>
+<li>Make sure to use a scatterplot to quickly determine whether there is a linear relationship between 2 variables. Even though there might be a relationship between 2 variables, we have to ensure that the relationship is truly linear. Otherwise, the variables might be better suites for a non-linear regression, which I’ll talk about later.</li>
+<li>Remove outliers that may disproportionately influence the regression line</li>
+<li>Scale/standardize independent variables</li>
+<li>Dependent variable should be a continuous numeric variable</li>
 </ul>
 </section>
 </section>

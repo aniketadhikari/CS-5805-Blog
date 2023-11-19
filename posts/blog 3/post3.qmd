@@ -59,7 +59,11 @@ Using weight, distance, route, and fuel costs to predict:
 * Delivery times 
 * Gas consumption 
 
+## Requirements for Linear Regression
 
-
+* Make sure to use a scatterplot to quickly determine whether there is a linear relationship between 2 variables. Even though there might be a relationship between 2 variables, we have to ensure that the relationship is truly linear. Otherwise, the variables might be better suites for a non-linear regression, which I'll talk about later.
+* Remove outliers that may disproportionately influence the regression line
+* Independent variables should be scaled/standardized to have a normal distribution
+* Dependent variable should be a continuous numeric variable
 
 # Non-linear Regression
