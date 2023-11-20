@@ -23,7 +23,7 @@ $Y = mx + b$
 * $x =$ independent variable
 * $b =$ slope intercept
 
-## Importance of Linear Regression 
+## When is Linear Regression Used?
 With the use of linear regression, we have a relatively simple and easy-to-interpret formula for making predictions based on historical data. As a result, it is heavily used in industries such as: 
 
 **Finance**
@@ -65,16 +65,6 @@ Using weight, distance, route, and fuel costs to predict:
 * Remove outliers that may disproportionately influence the regression line
 * Independent variables should be scaled/standardized to have a normal distribution
 * Dependent variable should be a continuous numeric variable
-
-## Types of Linear Regression
-
-| Type  | Description |
-|:----:|------------|
-|Simple Linear Regression|Models the relationship between a dependent variable and a single independent variable using the previously mentioned linear equation |
-|Multiple Linear Regression|Models the relationship between multiple dependent variables and multiple independent variables using a linear equation|
-|Polynomial Regression|Special case of linear regression in which the relationship between the independent variable $x$ and the dependent variable $y$ is modeled as an nth degree polynomial, like $x^2$, $x^3$|
-|Stepwise Regression|Involves selecting the most significant variables for inclusion in the model while excluding less significant ones.|
-: {.striped .hover}
 
 ## Simple Linear Regression
 Simple linear regression is used to model the linear relationship between a single independent variable and a dependent variable.
@@ -189,3 +179,16 @@ axs[1, 1].set_title("Affect of Freedom on Happiness")
 
 plt.show()
 ```
+
+# Non-linear Regression
+## What is Non-Linear Regression
+Non-linear regression is a regression technique that assumes non-linear relationship between one or more independent variables and a dependent variable. This assumption allows for more complex relationships to be modeled that can't be modeled with the straight line in linear regression. 
+
+## When is Non-Linear Regression Used?
+
+* Modeling growth rates
+* Modeling diminishing returns
+* Probabilistic outcomes
+  * Modeling binary outcomes like pass/fail, win/loss
+* Forecasting with trends 
+  * Time series with trends and seasonal patterns
