@@ -66,6 +66,17 @@ Using weight, distance, route, and fuel costs to predict:
 * Independent variables should be scaled/standardized to have a normal distribution
 * Dependent variable should be a continuous numeric variable
 
+## Pros and Cons of Linear Regression
+### Pros
+1. Simple to implement, easy to interpret
+2.  Fast to train and predict
+3.  Less prone to overfitting
+4.  Provides directly interpretable coefficients
+### Cons
+1. Pretty useless if the relationship is non-linear
+2. Bad at learning complex relationships in data
+3. Assumes linear relationship even when there isn't one
+
 ## Simple Linear Regression
 Simple linear regression is used to model the linear relationship between a single independent variable and a dependent variable.
 
@@ -195,3 +206,16 @@ Non-linear regression is a regression technique that assumes non-linear relation
 
 ## Requirements for Non-Linear Regression
 * Ensure the relationship between the independent and dependent variables is non-linear by examining the way the data is scattered
+* Figure out which type of non-linear model we want to use. We have a couple of options like polynomial, logarithmic, exponential, and logistic
+* There needs to be a sufficient number of data points to fit the model since non-linear regression is more complex.
+* Minimize the number outliers in order to reduce disproportionate influence on models
+
+## Pros and Cons of Non-Linear Regression
+### Pros
+1. Captures complex relationships
+2. Flexible
+3. Improved accuracy
+### Cons
+1. Complex and difficult to implement
+2. Risk of overfitting
+3. Less generalizability

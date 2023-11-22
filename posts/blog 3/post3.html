@@ -189,12 +189,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-is-linear-regression" id="toc-what-is-linear-regression" class="nav-link" data-scroll-target="#what-is-linear-regression">What is Linear Regression</a></li>
   <li><a href="#when-is-linear-regression-used" id="toc-when-is-linear-regression-used" class="nav-link" data-scroll-target="#when-is-linear-regression-used">When is Linear Regression Used?</a></li>
   <li><a href="#requirements-for-linear-regression" id="toc-requirements-for-linear-regression" class="nav-link" data-scroll-target="#requirements-for-linear-regression">Requirements for Linear Regression</a></li>
+  <li><a href="#pros-and-cons-of-linear-regression" id="toc-pros-and-cons-of-linear-regression" class="nav-link" data-scroll-target="#pros-and-cons-of-linear-regression">Pros and Cons of Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#pros" id="toc-pros" class="nav-link" data-scroll-target="#pros">Pros</a></li>
+  </ul></li>
   <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a></li>
   </ul></li>
   <li><a href="#non-linear-regression" id="toc-non-linear-regression" class="nav-link" data-scroll-target="#non-linear-regression">Non-linear Regression</a>
   <ul class="collapse">
   <li><a href="#what-is-non-linear-regression" id="toc-what-is-non-linear-regression" class="nav-link" data-scroll-target="#what-is-non-linear-regression">What is Non-Linear Regression</a></li>
   <li><a href="#when-is-non-linear-regression-used" id="toc-when-is-non-linear-regression-used" class="nav-link" data-scroll-target="#when-is-non-linear-regression-used">When is Non-Linear Regression Used?</a></li>
+  <li><a href="#requirements-for-non-linear-regression" id="toc-requirements-for-non-linear-regression" class="nav-link" data-scroll-target="#requirements-for-non-linear-regression">Requirements for Non-Linear Regression</a></li>
+  <li><a href="#pros-and-cons-of-non-linear-regression" id="toc-pros-and-cons-of-non-linear-regression" class="nav-link" data-scroll-target="#pros-and-cons-of-non-linear-regression">Pros and Cons of Non-Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#pros-1" id="toc-pros-1" class="nav-link" data-scroll-target="#pros-1">Pros</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,6 +270,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Independent variables should be scaled/standardized to have a normal distribution</li>
 <li>Dependent variable should be a continuous numeric variable</li>
 </ul>
+</section>
+<section id="pros-and-cons-of-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="pros-and-cons-of-linear-regression">Pros and Cons of Linear Regression</h2>
+<section id="pros" class="level3">
+<h3 class="anchored" data-anchor-id="pros">Pros</h3>
+<ol type="1">
+<li>Simple to implement, easy to interpret</li>
+<li>Fast to train and predict</li>
+<li>Less prone to overfitting</li>
+<li>Provides directly interpretable coefficients ### Cons</li>
+<li>Pretty useless if the relationship is non-linear</li>
+<li>Bad at learning complex relationships in data</li>
+<li>Assumes linear relationship even when there isn’t one</li>
+</ol>
+</section>
 </section>
 <section id="simple-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="simple-linear-regression">Simple Linear Regression</h2>
@@ -339,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this example, I wanted to create subplots so I could show the relationship between all 4 independent variables with <code>score</code> The first subplot is a scatterplot showing the relationship between <code>GDP per capita</code> and <code>Score</code>. The data is first scattered on the grid and then we run a best-fit line through this data. This line shows predictions of the <code>score</code> based on <code>GDP per capita</code>, with the assumption that their relationship is linear. We then create subplots for all of the other relationships and label them with the appropriate titles.</p>
 <p>All of them seem to have a positive relationship, meaning as the independent value <span class="math inline">\(x\)</span> increases, the dependent values <span class="math inline">\(y\)</span> also increases</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="fl">4.5</span>), tight_layout<span class="op">=</span><span class="va">True</span>)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">4.5</span>), tight_layout<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].scatter(gdp, score, c<span class="op">=</span><span class="st">"g"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].plot(gdp, gdp_predict_score, c<span class="op">=</span><span class="st">"r"</span>)</span>
@@ -359,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="post3_files/figure-html/cell-7-output-1.png" width="854" height="422"></p>
+<p><img src="post3_files/figure-html/cell-7-output-1.png" width="670" height="422"></p>
 </div>
 </div>
 </section>
@@ -384,8 +408,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Time series with trends and seasonal patterns</li>
 </ul></li>
 </ul>
+</section>
+<section id="requirements-for-non-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="requirements-for-non-linear-regression">Requirements for Non-Linear Regression</h2>
+<ul>
+<li>Ensure the relationship between the independent and dependent variables is non-linear by examining the way the data is scattered</li>
+<li>Figure out which type of non-linear model we want to use. We have a couple of options like polynomial, logarithmic, exponential, and logistic</li>
+<li>There needs to be a sufficient number of data points to fit the model since non-linear regression is more complex.</li>
+<li>Minimize the number outliers in order to reduce disproportionate influence on models</li>
+</ul>
+</section>
+<section id="pros-and-cons-of-non-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="pros-and-cons-of-non-linear-regression">Pros and Cons of Non-Linear Regression</h2>
+<section id="pros-1" class="level3">
+<h3 class="anchored" data-anchor-id="pros-1">Pros</h3>
+<ol type="1">
+<li>Captures complex relationships</li>
+<li>Flexible</li>
+<li>Improved accuracy ### Cons</li>
+<li>Complex and difficult to implement</li>
+<li>Risk of overfitting</li>
+<li>Less generalizability</li>
+</ol>
 
 
+</section>
 </section>
 </section>
 
