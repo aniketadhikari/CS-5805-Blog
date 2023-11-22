@@ -187,13 +187,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression">Linear Regression</a>
   <ul class="collapse">
   <li><a href="#what-is-linear-regression" id="toc-what-is-linear-regression" class="nav-link" data-scroll-target="#what-is-linear-regression">What is Linear Regression</a></li>
-  <li><a href="#importance-of-linear-regression" id="toc-importance-of-linear-regression" class="nav-link" data-scroll-target="#importance-of-linear-regression">Importance of Linear Regression</a></li>
+  <li><a href="#when-is-linear-regression-used" id="toc-when-is-linear-regression-used" class="nav-link" data-scroll-target="#when-is-linear-regression-used">When is Linear Regression Used?</a></li>
   <li><a href="#requirements-for-linear-regression" id="toc-requirements-for-linear-regression" class="nav-link" data-scroll-target="#requirements-for-linear-regression">Requirements for Linear Regression</a></li>
   <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a></li>
   </ul></li>
   <li><a href="#non-linear-regression" id="toc-non-linear-regression" class="nav-link" data-scroll-target="#non-linear-regression">Non-linear Regression</a>
   <ul class="collapse">
   <li><a href="#what-is-non-linear-regression" id="toc-what-is-non-linear-regression" class="nav-link" data-scroll-target="#what-is-non-linear-regression">What is Non-Linear Regression</a></li>
+  <li><a href="#when-is-non-linear-regression-used" id="toc-when-is-non-linear-regression-used" class="nav-link" data-scroll-target="#when-is-non-linear-regression-used">When is Non-Linear Regression Used?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -219,8 +220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span class="math inline">\(b =\)</span> slope intercept</li>
 </ul>
 </section>
-<section id="importance-of-linear-regression" class="level2">
-<h2 class="anchored" data-anchor-id="importance-of-linear-regression">Importance of Linear Regression</h2>
+<section id="when-is-linear-regression-used" class="level2">
+<h2 class="anchored" data-anchor-id="when-is-linear-regression-used">When is Linear Regression Used?</h2>
 <p>With the use of linear regression, we have a relatively simple and easy-to-interpret formula for making predictions based on historical data. As a result, it is heavily used in industries such as:</p>
 <p><strong>Finance</strong></p>
 <p>Using past financial statements, economic indicators, and historical prices to predict:</p>
@@ -337,12 +338,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now that we have the predictions for each of the independent variables, we can plot the data and run a best-fit line.</p>
 <p>In this example, I wanted to create subplots so I could show the relationship between all 4 independent variables with <code>score</code> The first subplot is a scatterplot showing the relationship between <code>GDP per capita</code> and <code>Score</code>. The data is first scattered on the grid and then we run a best-fit line through this data. This line shows predictions of the <code>score</code> based on <code>GDP per capita</code>, with the assumption that their relationship is linear. We then create subplots for all of the other relationships and label them with the appropriate titles.</p>
 <p>All of them seem to have a positive relationship, meaning as the independent value <span class="math inline">\(x\)</span> increases, the dependent values <span class="math inline">\(y\)</span> also increases</p>
-<p>fig, axs = plt.subplots(2, 2, figsize=(9, 4.5), tight_layout=True)</p>
-<p>axs[0, 0].scatter(gdp, score, c=“g”) axs[0, 0].plot(gdp, gdp_predict_score, c=“r”) axs[0, 0].set_title(“Affect of GDP on Happiness”)</p>
-<p>axs[1, 0].scatter(social_support, score, c=“m”) axs[1, 0].plot(social_support, social_support_predict_score, c=“r”) axs[1, 0].set_title(“Affect of Social Support on Happiness”)</p>
-<p>axs[0, 1].scatter(life_expectancy, score, c=“y”) axs[0, 1].plot(life_expectancy, life_expectancy_predict_score, c=“r”) axs[0, 1].set_title(“Affect of Life Expectancy on Happiness”)</p>
-<p>axs[1, 1].scatter(freedom, score, c=“c”) axs[1, 1].plot(freedom, freedom_predict_score, c=“red”) axs[1, 1].set_title(“Affect of Freedom on Happiness”)</p>
-<p>plt.show() ```</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="fl">4.5</span>), tight_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].scatter(gdp, score, c<span class="op">=</span><span class="st">"g"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].plot(gdp, gdp_predict_score, c<span class="op">=</span><span class="st">"r"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">"Affect of GDP on Happiness"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].scatter(social_support, score,  c<span class="op">=</span><span class="st">"m"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].plot(social_support, social_support_predict_score, c<span class="op">=</span><span class="st">"r"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">"Affect of Social Support on Happiness"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].scatter(life_expectancy, score, c<span class="op">=</span><span class="st">"y"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].plot(life_expectancy, life_expectancy_predict_score, c<span class="op">=</span><span class="st">"r"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].set_title(<span class="st">"Affect of Life Expectancy on Happiness"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].scatter(freedom, score, c<span class="op">=</span><span class="st">"c"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].plot(freedom, freedom_predict_score, c<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].set_title(<span class="st">"Affect of Freedom on Happiness"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="post3_files/figure-html/cell-7-output-1.png" width="854" height="422"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="non-linear-regression" class="level1">
@@ -350,6 +369,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-is-non-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-non-linear-regression">What is Non-Linear Regression</h2>
 <p>Non-linear regression is a regression technique that assumes non-linear relationship between one or more independent variables and a dependent variable. This assumption allows for more complex relationships to be modeled that can’t be modeled with the straight line in linear regression.</p>
+</section>
+<section id="when-is-non-linear-regression-used" class="level2">
+<h2 class="anchored" data-anchor-id="when-is-non-linear-regression-used">When is Non-Linear Regression Used?</h2>
+<ul>
+<li>Modeling growth rates</li>
+<li>Modeling diminishing returns</li>
+<li>Probabilistic outcomes
+<ul>
+<li>Modeling binary outcomes like pass/fail, win/loss</li>
+</ul></li>
+<li>Forecasting with trends
+<ul>
+<li>Time series with trends and seasonal patterns</li>
+</ul></li>
+</ul>
 
 
 </section>

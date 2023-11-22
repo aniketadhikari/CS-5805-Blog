@@ -158,8 +158,8 @@ Now that we have the predictions for each of the independent variables, we can p
 
  All of them seem to have a positive relationship, meaning as the independent value $x$ increases, the dependent values $y$ also increases
 
- ```{python}
-fig, axs = plt.subplots(2, 2, figsize=(9, 4.5), tight_layout=True)
+```{python}
+fig, axs = plt.subplots(2, 2, figsize=(7, 4.5), tight_layout=True)
 
 axs[0, 0].scatter(gdp, score, c="g")
 axs[0, 0].plot(gdp, gdp_predict_score, c="r")
@@ -192,3 +192,6 @@ Non-linear regression is a regression technique that assumes non-linear relation
   * Modeling binary outcomes like pass/fail, win/loss
 * Forecasting with trends 
   * Time series with trends and seasonal patterns
+
+## Requirements for Non-Linear Regression
+* Ensure the relationship between the independent and dependent variables is non-linear by examining the way the data is scattered
