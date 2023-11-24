@@ -1,6 +1,6 @@
 ---
 title: "Probability Theory"
-subtitle: "Using Python to Show tshe Basics of Probability"
+subtitle: "Using Python to Show the Basics of Probability"
 author: "Aniket Adhikari"
 date: "2023-11-13"
 date-modified: "2023-11-15"

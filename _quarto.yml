@@ -20,6 +20,14 @@ format:
   html:
     theme: lux
     css: styles.css
+    embed-resources: true
+    code-copy: true
+    code-link: true
+    code-tools: true
+  pdf:
+    colorlinks: true
+  gfm: default
+  
 
 
 

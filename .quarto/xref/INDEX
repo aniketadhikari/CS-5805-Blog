@@ -13,7 +13,8 @@
   },
   "about.qmd": {
     "about.html": "3f365e63",
-    "about.tex": "282cf770"
+    "about.tex": "282cf770",
+    "about.md": "4710f584"
   },
   "posts/welcome copy/index.qmd": {
     "index.html": "c08a7106"
@@ -24,22 +25,27 @@
   "posts/blog 1/post1.qmd": {
     "post1.html": "fc03e35b",
     "post1.ipynb": "f0e9f62b",
-    "post1.tex": "1c6eb723"
+    "post1.tex": "1c6eb723",
+    "post1.md": "77ed6758"
   },
   "posts/blog 2/post2.qmd": {
     "post2.html": "d29cef87",
     "post2.ipynb": "d9146882",
-    "post2.tex": "24667de2"
+    "post2.tex": "24667de2",
+    "post2.md": "95b5a6c3"
   },
   "posts/blog 3/post3.qmd": {
     "post3.html": "60106732",
     "post3.ipynb": "0c1f96d8",
-    "post3.tex": "e2553cdc"
+    "post3.tex": "e2553cdc",
+    "post3.md": "333e82c2"
   },
   "posts/blog 5/post5.qmd": {
     "post5.html": "8209e488"
   },
   "posts/blog 4/post4.qmd": {
-    "post4.html": "6ad2a4f9"
+    "post4.html": "6ad2a4f9",
+    "post4.tex": "ab179ab4",
+    "post4.md": "17ede107"
   }
 }

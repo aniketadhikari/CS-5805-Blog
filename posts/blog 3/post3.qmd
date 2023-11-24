@@ -3,9 +3,19 @@ title: "Linear and nonlinear regression"
 subtitle: "Using Python to Differentiate Linear and Non-Linear Regression"
 author: "Aniket Adhikari"
 date: "2023-11-15"
-date-modified: "2023-11-17"
+date-modified: "2023-11-21"
 toc: true
 toc-title: "On this page"
+code-line-numbers: true
+format:
+  html:
+    embed-resources: true
+    code-copy: true
+    code-link: true
+    code-tools: true
+  pdf:
+    colorlinks: true
+  gfm: default
 ---
 
 Regression analysis is a powerful statistical method for estimating the relationship between a dependent and independent variable. Regression analysis leverages historical data to make predictions and comes in 2 forms: linear and non-linear regression.
@@ -215,6 +225,7 @@ Non-linear regression is a regression technique that assumes non-linear relation
 1. Captures complex relationships
 2. Flexible
 3. Improved accuracy
+
 ### Cons
 1. Complex and difficult to implement
 2. Risk of overfitting
