@@ -1,5 +1,6 @@
 ---
 title: "Anomaly/Outlier Detection"
+subtitle: "Using Python to Detect Anomalies/Outliers"
 author: "Aniket Adhikari"
 date: "2023-11-23"
 date-modified: "2023-11-23"
@@ -15,4 +16,36 @@ format:
     colorlinks: true
 ---
 
-Anomaly de
+Anomaly detection, or outlier detection, is a machine learning process of detecting abnormal or rare observations in data that stick out from the rest of the data. Typically, outliers are data points that appear far away from other observations, meaning they differ greatly from the majority of the data
+
+# When is Anomaly/Outlier Detection Used?
+
+**Fraud Detection in Finance** $\rightarrow$ Identifying transactions, claims, or activity that is suspicious and does not conform to regular patterns
+
+* Track credit card fraud 
+* Detect money laundering
+* Detect unusual trading patterns in stock markets 
+
+**Health Care** $\rightarrow$ Monitoring patient data for anomalies
+
+* Disease detection based on electrocardiogram (ECG) readings
+* Uncover irregularities in medical imaging for cancer detection 
+
+**Cybersecurity** $\rightarrow$ Detecting unsual activity in computer networks
+
+* Detect network intrusion
+* Prevent data exfiltration attempts 
+* Enhance cybersecurity measures
+
+**Manufacturing and Quality Control** $\rightarrow$ Finding defects in manufacturing
+
+* Prevention of defective products from reaching consumers
+* Reduce waste 
+* Maintain product quality
+
+**Energy and Utilities Consumption** $\rightarrow$ Finding anomalies in energy consumption patterns 
+
+* Identify power grid failures 
+* Identify abnormal usage
+* Determine equipment malfunctions
+* Ensure reliable service delivery 
