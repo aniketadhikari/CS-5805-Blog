@@ -18,7 +18,21 @@ format:
 
 Anomaly detection, or outlier detection, is a machine learning process of detecting abnormal or rare observations in data that stick out from the rest of the data. Typically, outliers are data points that appear far away from other observations, meaning they differ greatly from the majority of the data
 
-# When is Anomaly/Outlier Detection Used?
+# Importance of Anomalies 
+
+1. Improves Model Accuracy
+
+Outliers can adversely effect model predictions if they aren't handled. Models might overfit to outliers and lead to reduced generalization on unseen data. Removing outliers can help to improve model accuracy and prevent misleading models. 
+
+2. Reduce Risks of Bad Decisions 
+
+Outlier driven misleading models can result in incorrect data interpretations and decisions. Furthermore, outliers can influence decision-making processes in various domains, from finance to healthcare. Properly handling outliers ensures that decisions are based on accurate and representative information.
+
+3. Identify Cost-saving Opportunities
+
+Analyzing positive outliers can reveal best practices and improvement opportunities leading to greater efficiencies. Likewise, negative outliers may show problems needing addressing.
+
+# Anomaly/Outlier Detection in Practice?
 
 **Fraud Detection in Finance** $\rightarrow$ Identifying transactions, claims, or activity that is suspicious and does not conform to regular patterns
 
@@ -31,7 +45,7 @@ Anomaly detection, or outlier detection, is a machine learning process of detect
 * Disease detection based on electrocardiogram (ECG) readings
 * Uncover irregularities in medical imaging for cancer detection 
 
-**Cybersecurity** $\rightarrow$ Detecting unsual activity in computer networks
+**Cybersecurity** $\rightarrow$ Detecting unsual activity or malicious traffic on computer networks
 
 * Detect network intrusion
 * Prevent data exfiltration attempts 
@@ -49,3 +63,9 @@ Anomaly detection, or outlier detection, is a machine learning process of detect
 * Identify abnormal usage
 * Determine equipment malfunctions
 * Ensure reliable service delivery 
+
+# Types of Outliers 
+
+## Visualization 
+
+* Use of scatter plots, box plots, histogram distributions 
