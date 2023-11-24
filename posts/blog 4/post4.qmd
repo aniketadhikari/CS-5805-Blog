@@ -69,3 +69,19 @@ Analyzing positive outliers can reveal best practices and improvement opportunit
 ## Visualization 
 
 * Use of scatter plots, box plots, histogram distributions 
+* Allows for visual inspection to find anomalies 
+
+## Standard Deviation
+
+* Thresholds based on standard deviations from the mean
+* Z-score calculates how far away observatoin are from the mean in terms of standard deviatoin 
+
+## Percentiles 
+
+## Distance-Based 
+
+## Density-Based
+
+## Classification-Based
+
+## Time Series Specific 
