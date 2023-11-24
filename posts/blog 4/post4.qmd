@@ -3,6 +3,16 @@ title: "Anomaly/Outlier Detection"
 author: "Aniket Adhikari"
 date: "2023-11-23"
 date-modified: "2023-11-23"
+toc: true
+toc-title: "On this page"
+code-line-numbers: true
+highlight-style: dracula
+format:
+  html:
+    embed-resources: true
+    code-tools: true
+  pdf:
+    colorlinks: true
 ---
 
 Anomaly de

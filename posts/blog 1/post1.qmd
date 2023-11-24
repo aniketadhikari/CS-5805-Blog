@@ -7,6 +7,14 @@ date-modified: "2023-11-15"
 image: "https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png"
 toc: true
 toc-title: "On this page"
+code-line-numbers: true
+highlight-style: dracula
+format:
+  html:
+    embed-resources: true
+    code-tools: true
+  pdf:
+    colorlinks: true
 ---
 
 # What is Probability Theory?

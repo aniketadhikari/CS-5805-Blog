@@ -7,20 +7,23 @@ date-modified: "2023-11-21"
 toc: true
 toc-title: "On this page"
 code-line-numbers: true
+highlight-style: dracula
+callout-appearance: simple
 format:
   html:
     embed-resources: true
-    code-copy: true
-    code-link: true
     code-tools: true
   pdf:
     colorlinks: true
-  gfm: default
 ---
 
 Regression analysis is a powerful statistical method for estimating the relationship between a dependent and independent variable. Regression analysis leverages historical data to make predictions and comes in 2 forms: linear and non-linear regression.
 
-<u>Side note</u>: an **independent variable** is the value that affects the outcome of a dependent variable and is often referred to as the explanatory variable because it explains the reason for a certain outcome, or **dependent variable**. Dependent variables are usually represented by $y$ and independent varaibles are represented by $x$. 
+::: {.callout-tip title="Tip with Title"}
+
+an **independent variable** is the value that affects the outcome of a dependent variable and is often referred to as the explanatory variable because it explains the reason for a certain outcome, or **dependent variable**. Dependent variables are usually represented by $y$ and independent varaibles are represented by $x$. 
+
+:::
 
 # Linear Regression
 ## What is Linear Regression
@@ -82,6 +85,7 @@ Using weight, distance, route, and fuel costs to predict:
 2.  Fast to train and predict
 3.  Less prone to overfitting
 4.  Provides directly interpretable coefficients
+
 ### Cons
 1. Pretty useless if the relationship is non-linear
 2. Bad at learning complex relationships in data
@@ -93,7 +97,6 @@ Simple linear regression is used to model the linear relationship between a sing
 We start off by importing the required libraries, including the `LinearRegression` package.
 
 ```{python}
-# Import required libraries
 import numpy as np 
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
