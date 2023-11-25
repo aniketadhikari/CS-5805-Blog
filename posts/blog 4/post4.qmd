@@ -78,10 +78,25 @@ Analyzing positive outliers can reveal best practices and improvement opportunit
 
 ## Percentiles 
 
+* Declare observations below X percentile or above Y percentile as outliers 
+* Less sensitive to outliers than standard deviation
+
 ## Distance-Based 
+
+* Mahalanobis, Euclidean, Manhattan distances
+* Mark points too far from general cluster
 
 ## Density-Based
 
+* Find low density regions using algorithms like Local Outlier Factor
+* Isolation Forests isolate anomalies
+
 ## Classification-Based
 
+* Train classification models to label outliers
+* Supervised models so need tagged historical data
+
 ## Time Series Specific 
+
+* Treat long term trends, seasonality before applying outlier detection
+* Use statistical process control charts
