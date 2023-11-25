@@ -4,6 +4,7 @@ subtitle: "Using Python to Differentiate Linear and Non-Linear Regression"
 author: "Aniket Adhikari"
 date: "2023-11-15"
 date-modified: "2023-11-21"
+image: "https://archives.bulbagarden.net/media/upload/thumb/2/27/0004Charmander.png/500px-0004Charmander.png"
 toc: true
 toc-title: "On this page"
 code-line-numbers: true

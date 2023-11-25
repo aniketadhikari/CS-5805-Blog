@@ -4,7 +4,7 @@ subtitle: "Using Python to Show the Basics of Probability"
 author: "Aniket Adhikari"
 date: "2023-11-13"
 date-modified: "2023-11-15"
-image: "https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png"
+image: "https://archives.bulbagarden.net/media/upload/thumb/4/4a/0025Pikachu.png/500px-0025Pikachu.png"
 toc: true
 toc-title: "On this page"
 code-line-numbers: true
