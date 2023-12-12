@@ -3,12 +3,14 @@ project:
   output-dir: /
 
 website:
-  title: "CS 5805 Machine Learning Blog"
+  title: "Aniket Adhikari Portfolio"
+  search:
+    location: navbar
+    type: overlay
   navbar:
     style: docked
     background: primary 
     search: true
-    page-footer: "Copyright 2023, Aniket Adhikari" 
     reader-mode: true
     right:
       - about.qmd
